@@ -1,0 +1,3856 @@
+<!DOCTYPE doctype html>
+<script style="display:none">
+ (function () {
+    var agent = window.navigator.userAgent,
+        safari = agent.indexOf('Safari') >= 0,
+        versionIndex = agent.indexOf('Version'),
+        version = 0,
+        // Returns null when healthy, undefined when localStorage is not supported.
+        unlocked = localStorage.getItem('federateUnlocked'),
+        // Site setting defined in site's environment.properties file.
+        active = true;
+
+    // Grab the Safari version number.
+    if (versionIndex >= 0) {
+        version = parseInt('' + agent.substring(versionIndex + 8));
+    }
+
+    // Global state for all other code in the page to use.
+    window.janrainSafariRefreshDetected = active && safari && version > 5 && unlocked === null;
+
+    // Provide console feedback when refresh is impending.
+    if (janrainSafariRefreshDetected) {
+        console.warn('[jsrd v1.0.1] JANRAIN / SAFARI REFRESH DETECTED!');
+    }
+}());
+</script>
+<html lang="en">
+ <!-- Methode uuid: "7e1772be-297a-11e9-bab0-a7d3b5289767" -->
+ <head prefix="og: http://ogp.me/ns#">
+  <!--  one frameset common -->
+  <script type="text/javascript">
+   (window.NREUM||(NREUM={})).loader_config={xpid:"UA8DVFJACQoCVFhXAQI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);
+  </script>
+  <script src="//cdn.blueconic.net/coxmediagroup.js">
+  </script>
+  <!-- nicheParams: ContextMap[envPropertyNiche:false, isNiche:false, legacyNiche:false, nicheClass:, nicheProductID:null, nicheReferrerSuffix:null, referredNiche:null, section:SiteSection [[+       217#] /PortalSites/myajc.com/news/national-politics [FolderProxyImpl:PortalSection, 8.0.2713489138]], sectionShortTitle:] -->
+  <!-- begin site_meta_override block -->
+  <!-- begin page_title_override block -->
+  <title>
+   Stacey Abrams Speech: What people are saying
+  </title>
+  <!-- end page_title_override block -->
+  <!-- begin meta_description_override block -->
+  <meta content="Updated social media reaction to SOTU response from former Georgia gubernatorial candidate Stacey Abrams." name="description"/>
+  <!-- end meta_description_override block -->
+  <meta content="default-src 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https:; img-src 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https: blob: data: https:; script-src 'self' 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https: 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https: 'unsafe-inline'; media-src 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https: blob: data:; font-src 'self' http://*.pagefair.com http://*.cloudfront.net http://*.tiles.mapbox.com http://*.intellicast.com http://*.wsi.com http://*.coxnewsweb.com http://*.mathtag.com http://*.inform.com http://*.s3.amazonaws.com http://*.zap2it.com http://*.ajc.com http://*.accessatlanta.com http://*.myajc.com http://*.contextweb.com http://*.adkernel.com http://*.pubmatic.com http://ad.afy11.net http://*.coxmediagroup.com http://*.coxohio.com http://*.coxmediagroupohio.com http://code.ionicframework.com http://*.pointslocal.com http://*.cmgdigital.com http://*.googleapis.com http://*.wibbitz.com http://*.cdn.turner.com https: data:; upgrade-insecure-requests;" http-equiv="Content-Security-Policy"/>
+  <meta charset="utf-8">
+   <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+   <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible"/>
+   <!-- begin canonical_url_override block -->
+   <link href="https://www.ajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/" rel="canonical"/>
+   <!-- end canonical_url_override block -->
+   <!-- begin viewport_override block -->
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+   <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+   <!-- end viewport_override block -->
+   <!-- begin favicon_override block -->
+   <link href="/r/PortalConfig/np-one/assets-one/myajc/images/favicon-apple-touch-icon.png" rel="apple-touch-icon"/>
+   <link href="/r/PortalConfig/np-one/assets-one/myajc/images/favicon.ico" rel="shortcut icon"/>
+   <!-- end favicon_override block -->
+   <!-- begin og_meta_override block -->
+   <meta content="https://www.myajc.com/rf/image_large/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG" property="og:image"/>
+   <meta content="533" property="og:image:height"/>
+   <meta content="800" property="og:image:width"/>
+   <meta content="Social media reacts to Stacey Abrams’ State of the Union response " property="og:title"/>
+   <meta content="article" property="og:type"/>
+   <meta content="https://www.myajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/" property="og:url"/>
+   <meta content="Updated social media reaction to SOTU response from former Georgia gubernatorial candidate Stacey Abrams." property="og:description"/>
+   <meta content="myajc" property="og:site_name"/>
+   <!-- end og_meta_override block -->
+   <!-- begin twitter_meta_override block -->
+   <meta content="summary_large_image" name="twitter:card"/>
+   <meta content="Updated social media reaction to SOTU response from former Georgia gubernatorial candidate Stacey Abrams." name="twitter:description"/>
+   <meta content="https://www.myajc.com/rf/image_large/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG" name="twitter:image"/>
+   <meta content="@myajc" name="twitter:site"/>
+   <meta content="Social media reacts to Stacey Abrams’ State of the Union response " name="twitter:title"/>
+   <meta content="https://www.myajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/" name="twitter:url"/>
+   <!-- end twitter_meta_override block -->
+   <!-- begin fb_appid_override block -->
+   <meta content="271955106309616" property="fb:app_id"/>
+   <meta content="13310147298" property="fb:pages"/>
+   <meta content="337952186376944" property="fb:pages"/>
+   <meta content="656048601138691" property="fb:pages"/>
+   <meta content="19912395847" property="fb:pages"/>
+   <meta content="29980347283" property="fb:pages"/>
+   <meta content="246003725592002" property="fb:pages"/>
+   <meta content="152156077127" property="fb:pages"/>
+   <meta content="163455587217" property="fb:pages"/>
+   <meta content="224593796162" property="fb:pages"/>
+   <meta content="739649646080716" property="fb:pages"/>
+   <meta content="160775312047" property="fb:pages"/>
+   <meta content="290067474666846" property="fb:pages"/>
+   <meta content="164582392136" property="fb:pages"/>
+   <meta content="216777139531" property="fb:pages"/>
+   <meta content="156272574683" property="fb:pages"/>
+   <meta content="235314089850766" property="fb:pages"/>
+   <meta content="154018957983813" property="fb:pages"/>
+   <meta content="663148593793872" property="fb:pages"/>
+   <!-- end fb_appid_override block -->
+   <!-- persrec meta configuration -->
+   <meta content="https://www.myajc.com/rf/image_large/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG" property="og:pers_rec_image"/>
+   <meta content="2019-02-05T23:11:00-0500" property="og:pers_rec_first_pub_date"/>
+   <meta content="article" property="og:pers_rec_web_type"/>
+   <!-- grab expiration date (if it exists) (implemented for persrec vendors) -->
+   <!-- end persrec meta -->
+   <link href="https://www.ajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/amp.html" rel="amphtml"/>
+   <meta content="English" name="language"/>
+   <!-- end site_meta_override block -->
+   <!--  Start Structured Data -->
+   <script type="application/ld+json">
+    {
+	"@context": "http://schema.org",
+    "@type": "NewsArticle",
+	"inLanguage": "en_US",
+	"mainEntityofPage": "https://www.ajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/",
+	"publisher": {
+		"@type": "Organization",
+		"name": "ajc.com",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://www.myajc.com/rw/PortalConfig/np-free/assets/ajc/images/small-logo.png"
+		}
+	},
+	"articleSection": "National Politics",
+	"headline": "Social media reacts to Stacey Abrams&rsquo; State of the Union response",
+	"datePublished": "2019-02-06T04:11:00Z",
+	"dateModified": "2019-02-06T13:44:25Z",
+	"author": {
+		"@type": "Organization",
+		"name": "ajc.com"
+	},
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://www.myajc.com/rf/image_inline/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG"
+	}
+}
+   </script>
+   <!--  End Structured Data -->
+   <script type="text/javascript">
+    window._taboola = window._taboola || [];
+              _taboola.push({article:'auto'});
+              !function (e, f, u, i) {
+                if (!document.getElementById(i)){
+                  e.async = 1;
+                  e.src = u;
+                  e.id = i;
+                  f.parentNode.insertBefore(e, f);
+                }
+              }(document.createElement('script'),
+              document.getElementsByTagName('script')[0],
+              '//cdn.taboola.com/libtrc/cox-atlantajournal-constitution/loader.js',
+              'tb_loader_script');
+              if(window.performance && typeof window.performance.mark == 'function')
+                {window.performance.mark('tbl_ic');}
+   </script>
+   <!-- IE11 fallback -->
+   <script src="//www.googletagservices.com/tag/js/gpt.js">
+   </script>
+   <script src="//www.myajc.com/r/PortalConfig/common/assets/js/harmony-7.6.0.min.js">
+   </script>
+   <script style="display:none">
+    window.cmg = window.cmg || {};
+        cmg.adconf = {
+            slotconf: [],
+            targeting: {}
+        };
+   </script>
+   <script style="display:none">
+    cmg.adconf.adunit = '12523293/Atlanta_NP/myajc_web_default/news/national_politics';
+   </script>
+   <script style="display:none">
+    (function () {
+        cmg.adconf.targeting.sky = 'Few Clouds' || 'ERROR';
+        cmg.adconf.targeting.weather = '';
+
+        
+                var floor = Math.floor(46 / 5) * 5;
+                cmg.adconf.targeting.temp_range = floor + ' to ' + (floor + 4);
+            
+    }());
+   </script>
+   <script style="display:none">
+    cmg.adconf.targeting.obj_type = location.pathname.indexOf('queryResult') > 0 ? 'List' : 'story';
+    cmg.adconf.targeting.obj_id = '9.0.1851864432';
+    cmg.adconf.targeting.uuid = '7e1772be-297a-11e9-bab0-a7d3b5289767';
+   </script>
+   <script style="display:none">
+    (function () {
+        
+        function getQueryParam(name) {
+            var q = location.search.match(new RegExp('[?&]' + name + '=([^&#]*)'));
+            return q && q[1];
+        }
+
+        cmg.adconf.targeting.environ = location.search.indexOf('testads') > 0 ? 'debug' : location.host.split('.')[0];
+        cmg.adconf.targeting.mediatype = 'np-one';
+        cmg.adconf.targeting.qa = getQueryParam('qa') || '';
+    }());
+   </script>
+   <script style="display:none">
+    cmg.adconf.breakpoints = [
+            1,
+            768,
+            972,
+            
+        ];
+
+        
+        cmg.adconf.targeting.topics = [
+            
+                'politicsajc',
+            
+                'ga-government.acj',
+            
+                'georgia-news.ajc',
+            
+        ];
+
+        
+        cmg.adconf.targeting.categories = [
+            
+                    'News',
+                
+                    'State & Regional Govt & Politics',
+                
+        ];
+
+        
+        googletag.cmd.push(function () {
+            var pubads = googletag.pubads();
+            
+                harmony.disable.initialLoad(true);
+            
+            pubads.collapseEmptyDivs(true);
+            pubads.enableSingleRequest();
+            pubads.setCentering(true);
+        });
+   </script>
+   <script>
+    harmony.on('ready', function () {
+	    if (!cmg.adconf || !cmg.adconf.slotconf) {
+	    	console.error('Ad slots not configured in cmg.adconf.slotconf. Amazon A9 bidding quitting');
+	    	return;
+	    }
+
+		//Load the APS JavaScript Library
+	    !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+	    //Initialize the Library
+	    apstag.init({
+	        pubID: '3185',
+	        adServer: 'googletag'
+	    });
+
+        var singlePixel = ''+[1,1],
+            biddingSlots = cmg.adconf.slotconf.reduce(function (filtered, conf) {
+                if (conf.name !== 'WP01' && (''+conf.sizes !== singlePixel)) {
+                    filtered.push({
+                        slotID: conf.id,
+                        slotName: conf.adunit,
+                        sizes: conf.sizes
+                    });
+                }
+                return filtered;
+            }, []);
+
+	    apstag.fetchBids({
+	        slots: biddingSlots,
+	        timeout: 2e3
+	    }, function(bids) {
+	        // set apstag targeting on googletag, then trigger the first DFP request in googletag's disableInitialLoad integration
+	        googletag.cmd.push(function(){
+	            apstag.setDisplayBids();
+	            if (window.add_prebid_script) {
+	                window.add_prebid_script();
+	            } else {
+	                googletag.pubads().refresh();
+	            }
+	        });
+	    });
+	});
+   </script>
+   <meta content="230242" name="eomportal-instanceid"/>
+   <meta content="1681010" name="eomportal-id"/>
+   <meta content="9.0.1851864432" name="eomportal-loid"/>
+   <meta content="7e1772be-297a-11e9-bab0-a7d3b5289767" name="eomportal-uuid"/>
+   <meta content="Thu Mar 07 12:32:59 EST 2019" name="eomportal-lastUpdate"/>
+   <link href="/r/PortalConfig/np-one/assets-one/css/story.css" rel="stylesheet" type="text/css"/>
+   <link href="/r/PortalConfig/np-one/assets-one/css/footer.css" rel="stylesheet" type="text/css"/>
+   <link href="/r/PortalConfig/np-one/assets-one/css/ie11.css" rel="stylesheet" type="text/css"/>
+   <!-- Meter objectType: story/NA -->
+   <meta content="www.myajc.com" name="cmg:product"/>
+   <meta content="News" name="cmg:siteSection"/>
+   <meta content="/news/national-politics" name="cmg:mainSection"/>
+   <meta content="/News/State &amp; Regional Govt &amp; Politics" name="cmg:primaryCategory"/>
+   <meta content="/News/State &amp; Regional Govt &amp; Politics" name="cmg:categories"/>
+   <meta content="politicsajc, ga-government.acj, georgia-news.ajc" name="cmg:topics"/>
+   <meta content="true" name="cmg:meter"/>
+   <meta content="5" name="cmg:maxMeterTemporary"/>
+   <meta content="true" name="cmg:updatePageViewDataDirectly"/>
+   <!-- begin metrics_complete_override block -->
+   <script>
+    localStorage.setItem("sdsat_debug", true);
+   </script>
+   <script>
+    if(typeof(pubsub)=="undefined"){
+	pubsub={
+			subscribe:function(){
+				if(typeof(DDO.deferredSubscribe) == "undefined"){
+					DDO.deferredSubscribe = [];
+				}
+				DDO.deferredSubscribe.push(arguments);
+			},
+			publish:function(){
+				if(typeof(DDO.deferredPublish) == "undefined"){
+					DDO.deferredPublish = [];
+				}
+				DDO.deferredPublish.push(arguments);
+			}
+	};
+	
+}
+window.pubsub = pubsub;
+   </script>
+   <script src="//assets.adobedtm.com/20d5deb47c9e7fe47a9f969db01578a739d7179d/satelliteLib-3bdb96ce8c62153cdc81a8a72fc964fe2ffa1652.js">
+   </script>
+   <!-- begin metrics_complete_override block -->
+   <!-- METRIC TAG -->
+   <!-- Primary Category -->
+   <!-- Setting originating site Start-->
+   <!-- Setting originating site End-->
+   <!-- Setting Site Domain and Site ID Start-->
+   <!-- Setting Site Domain and Site ID End-->
+   <!-- Setting Provide Name -->
+   <!--Standalone -->
+   <!-- Setting video proxy and video proxy play list vendor names -->
+   <script>
+    var DDO = DDO || {};
+
+<!-- begin metrics_dtm_library_override block -->
+	DDO.DTMLibraryURL = '//assets.adobedtm.com/20d5deb47c9e7fe47a9f969db01578a739d7179d/satelliteLib-3bdb96ce8c62153cdc81a8a72fc964fe2ffa1652.js';
+<!-- end metrics_dtm_library_override block -->
+
+
+DDO.hasLocalStorage = function(){
+	isDefined = typeof(localStorage) != "undefined";
+	if(isDefined){
+		localStorage.setItem("test", "test");
+		canRetrieve = localStorage.getItem("test") == "test";
+	}
+	localStorage.removeItem("test");
+	return isDefined && canRetrieve;
+		 
+}
+
+DDO.connextActive = function(){
+	var connextMetaTag = document.querySelector('meta[name="cmg:connext:config"]');
+	if(connextMetaTag){ 
+		return true;
+	}else{
+		return false;
+	}
+}
+   </script>
+   <script src="//www.myajc.com/r//PortalConfig/np-one/metrics/js/dtm-ddo-utilities.js">
+   </script>
+   <script>
+    // 	SITE DATA
+	
+	DDO.siteData = {
+		siteID: 'ajc',
+	    siteDomain: 'ajc.com',
+	    siteVersion: 'responsive site',
+	    siteFormat: 'newspaper',
+	    siteMetro: 'ga: atlanta',
+	    siteMedium: 'newspaper',
+	    siteType: 'main: onesite',
+	    siteCMS: 'methode'
+	};
+    // PAGE DATA
+	var isDwp = false;
+	console.log("isDwp: ", isDwp);
+	var isHome = isDwp && false;
+	console.log("page Title:" + 'Stacey Abrams Speech: What people are saying');
+	var trimPageNameUrl = removeExtracharFromUrl('/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/');
+	console.log("Primary Category: " + '/News/State & Regional Govt & Politics');
+		    
+	DDO.pageData = {
+		pageFlow : "",
+		pageNumber : '1',
+		pageType : 'standalone page',
+		pageIsDwp: isDwp // Necessary for bookmarklet purposes.
+	};
+	if(isDwp) {
+	    DDO.pageData.pageContentType = (isHome) ? 'homepage' : 'section front';
+		DDO.pageData.pageMainSection = (isHome) ? '/'+'homepage' : '/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/';
+		DDO.pageData.pageName = (isHome) ? '/' + 'homepage' + '/' : '/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/';
+	} else {
+	    DDO.pageData.pageContentType = 'article';
+		DDO.pageData.pageMainSection ='/news/national-politics';
+		DDO.pageData.pageName = trimPageNameUrl;
+	}
+	
+	DDO.pageData.pageTitle = 'Stacey Abrams Speech: What people are saying';
+	DDO.pageData.pageSiteSection = (isHome) ? 'home' : 'News';
+	 
+	if (DDO.pageData.pageContentType == '') {
+		var pageName = DDO.pageData.pageName;
+		var pageNameSplit = pageName.split('/');
+		DDO.pageData.pageContentType = pageNameSplit[1];
+	}
+	
+	DDO.pageData.pageCategory = 'State & Regional Govt & Politics';
+	if (DDO.pageData.pageCategory == 'Error') {
+		DDO.pageData.pageContentType = "Page not found";
+	}
+	DDO.pageData.pageSubCategory = '';
+	
+	if(DDO.pageData.pageContentType =='404'){		
+		DDO.pageData.pageType="errorpage";		
+		DDO.pageData.pageTitle="page not found";		
+		DDO.pageData.pageContentType = "404 page";		
+		URLArray = window.location.href.split('/');		
+		DDO.pageData.pageName = '/404_page/'+URLArray[URLArray.length-1];		
+	}
+	
+	if(DDO.pageData.pageContentType == 'weather'){
+		DDO.pageData.pageCategory = 'weather';
+		DDO.pageData.pageTitle = 'weather';
+	}
+	
+	if(DDO.pageData.pageContentType == 'search'){
+		var aMetricsSiteSearchType, aMetricsSearchTerms, aMetricsNumResults;
+		DDO.pageData.pageName = "/search-results/";
+		DDO.pageData.pageTitle = "search results";
+		DDO.pageData.pageMainSection = "/search";
+		DDO.pageData.pageContentType = "search"; 
+		DDO.pageData.pageSiteSection = "search";
+		
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	}
+	
+	// CONTENT DATA (contentViewType is set in access meter metrics)
+	DDO.contentData = DDO.contentData || {};
+	var contentTopics ='';
+	
+		contentTopics += false ? 'politicsajc' : 'politicsajc' + ',';
+	
+		contentTopics += false ? 'ga-government.acj' : 'ga-government.acj' + ',';
+	
+		contentTopics += true ? 'georgia-news.ajc' : 'georgia-news.ajc' + ',';
+	
+	DDO.contentData.contentTopics = contentTopics;
+	var contentByline = '';
+	
+	DDO.contentData.contentByline = contentByline;
+	DDO.contentData.contentOriginatingSite =  'ajc';
+	DDO.contentData.contentID = '7e1772be-297a-11e9-bab0-a7d3b5289767';
+	DDO.contentData.contentVendor = '';
+	DDO.contentData.contentViewType = DDO.contentData.contentViewType || '';
+	DDO.contentData.contentPublishDate = '20190206041100';
+	DDO.contentData.contentUpdatedDate = '20190206045600';
+	DDO.contentData.blogName = '';
+	DDO.contentData.galleryName = '';
+	var pageSubContentType = '';
+	if(pageSubContentType == 'Post') {
+		DDO.contentData.blogName = 'Stacey Abrams Speech: What people are saying';
+	}else if(DDO.pageData.pageContentType == 'gallery') {
+		DDO.contentData.galleryName = 'Stacey Abrams Speech: What people are saying';
+	}
+	
+	//We need to set this one only for imported stories.
+	DDO.contentData.contentOriginatingCMS='Methode';
+	DDO.contentData.contentOriginatingID='7e1772be-297a-11e9-bab0-a7d3b5289767';
+	DDO.contentData.melvilID='';
+
+	
+	    
+	    
+	        DDO.contentData.connextProductID = 'www.myajc.com';
+	    
+		
+	
+	//SEARCH DATA PAGE CONTENT
+		
+   
+  
+   DDO.pageData.pageNumber = location.search.split('page=')[1] ? location.search.split('page=')[1] : location.search.split('offset=')[1] ? location.search.split('offset=')[1] : '1';
+   
+<!-- begin metrics_elements_override block -->
+
+
+<!-- end metrics_elements_override block -->	
+
+DDO.init = function(pubsub, dependentEvents) {
+	// The following code defers loading the DTM library until after certain events have been fired,
+	// namely janrain, mg2, and access meter.
+	// Note: we need to add access meter to list of dependent events etc!
+	DDO.dependentEvents = dependentEvents;// e.g. ['authn', 'authz'];
+	setTimeout(function(){
+		DDO.dependentEventCheck("TIMED OUT");
+	}, 10000);
+	if(dependentEvents.length == 0){
+		DDO.utilities.triggerDTMPageView();//DDO.utilities.loadDTMLibrary();
+	}
+	
+	pubsub.publish("DDO-initialized");
+	console.log('DDO: ', DDO);
+}
+
+//Function to remove last alphanumeric chars from DDO.pageData.pageName url
+function removeExtracharFromUrl(urlPath){
+    var urlArr = urlPath.split('/');
+    if (urlArr.length > 3) {
+    	var urlArr_new = [];
+		for (var i=0; i<urlArr.length-2;i++) {
+			urlArr_new.push(urlArr[i]);
+		}
+		return urlArr_new.join('/') + '/';
+    } 
+    else {
+    	return urlPath;	
+    }
+}
+   </script>
+   <!-- end metrics_complete_override block -->
+   <script>
+    DDO.interaction = {
+	init: function(pubsub, $){
+		// pubsubcutioner can use regex for event names, thus all interaction type events
+		// can be listened to assuming the data is correct.
+		pubsub.subscribe("site-interaction", function(event, data){
+			// data should be like: {element:"[widget clicked]",action: "[button clicked]"}
+			DDO.action("interaction.Website", data);
+		});
+	}
+};
+   </script>
+   <script>
+    DDO.janrainPort = {
+	init: function(pubsub, $){
+		var returnUser = false;
+		var isModalOpen = false;
+		var autoLogin = true;
+		
+		pubsub.subscribe("janrain.sessionNotFound", function(){
+			pubsub.publish("authn-anonymous");
+		});
+		pubsub.subscribe("janrain.logout",function(){
+			pubsub.publish("authn-logout");
+		});
+		pubsub.subscribe("janrain.loginSuccess", function(event, data){
+			pubsub.publish("login-success");
+			pubsub.publish("authn-login", data);
+			if(!returnUser && !window.mg2){
+				pubsub.publish("login-complete");
+			}
+		});
+		pubsub.subscribe("janrain.loginFailed", function(){
+			pubsub.publish("login-error");
+		});
+		
+		pubsub.subscribe("janrain.sessionFound", function(event, data){
+			pubsub.publish("session-found");
+			pubsub.publish("authn-login", data);
+			if(autoLogin) { 
+				pubsub.publish("authn-login-return");
+			}
+			
+		});
+		pubsub.subscribe("janrain.onEmailSent", function(){
+			pubsub.publish("registration-success");
+		});
+		pubsub.subscribe("janrain.onModalOpen", function(){
+			if (!isModalOpen) {
+				pubsub.publish("authn-modal-open");
+				isModalOpen = true;
+				autoLogin = false;
+			}
+		});
+		pubsub.subscribe("janrain.onModalClose", function(){
+			pubsub.publish("authn-modal-close");
+			isModalOpen = false;
+		});
+	}
+}
+   </script>
+   <script>
+    DDO.comment = {
+	init: function(pubsub, $){
+		pubsub.subscribe('livefyre.commentPosted', function(event, data){
+			DDO.action('commentSubmitted');
+			if (data.sharedToFacebook) {
+                pubsub.publish('authn-social-share', { type:'share-content', site:'facebook' });
+            }
+            if (data.sharedToTwitter) {
+                pubsub.publish('authn-social-share', { type:'share-content', site:'twitter' });
+            }
+		});
+		
+		pubsub.subscribe('additional-comments', function(event, data){
+			DDO.action('additionalComments', data);
+		});
+	}
+};
+   </script>
+   <script>
+    DDO.socialShare = {
+	init: function(pubsub, $){
+		pubsub.subscribe("authn-social-share", function(event, data){
+			DDO.action("socialClick", data);			
+		});
+		pubsub.subscribe("livefyre.commentShared", function(event, data){
+			if (data.sharedToFacebook) {
+	            DDO.action('socialClick', { type:'share-comment', site:'facebook' });
+	        }
+	        if (data.sharedToTwitter) {
+	            DDO.action('socialClick', { type:'share-comment', site:'twitter' });
+	        }
+		});
+	
+	}
+};
+   </script>
+   <script>
+    DDO.gallery = {
+	init: function(pubsub, $){
+		pubsub.subscribe("gallery-secondary", function(event, data){
+			DDO.action('gallerySecondaryPhotoView');
+		});
+		pubsub.subscribe("gallery-opened", function(event, data){
+			DDO.action('galleryOpened');
+		});
+	}
+};
+   </script>
+   <script>
+    DDO.breakingNews = {
+	init: function(pubsub, $){
+		pubsub.subscribe("breaking-news-banner", function(event, data){
+			DDO.action("breakingNews", {contentType:DDO.pageData.pageContentType});
+		});
+		
+		pubsub.subscribe("breaking-news-story", function(event, data){
+			DDO.action('breakingNewsStory');
+		});
+	}
+};
+   </script>
+   <script>
+    DDO.relatedObjects = {
+	init: function(pubsub, $){
+		pubsub.subscribe("related-objects", function(event, data){
+			DDO.action("relatedObjects", {contentType:DDO.pageData.pageContentType});
+		});
+		pubsub.subscribe("non-gallery-photo", function(event, data){
+			DDO.action("nonGalleryPhoto", {contentType:DDO.pageData.pageContentType});
+		});
+	}
+};
+   </script>
+   <script>
+    window.breakpointArray = [];
+DDO.breakpoint = {
+	init: function(pubsub, $){
+		
+		DDO.pageData = DDO.pageData || {};
+		if (typeof $ !== 'undefined') {
+			var columns = getColumnNumber($(window).width());
+		}
+		DDO.pageData.pageLayout = columns + " column"
+		DDO.dependentEventCheck('breakpoint');
+		
+		pubsub.subscribe("breakpoint", function(event, data){
+			DDO.action("pageLayoutChange", data);
+		});
+	}
+};
+
+function getColumnNumber(width){
+    breakpointArray = window.breakpointArray || 0;
+    if(breakpointArray === 0){
+        console.log("Breakpoint metrics tag not included in Methode frameset. Cannot compute column widths.")
+        return false;
+    }else{
+        threeColumn = breakpointArray [0],
+        twoColumn = breakpointArray[1],
+        oneColumn = breakpointArray[2];
+        if(width<= oneColumn){
+            return 1;
+        }else if(width>oneColumn &&  width <= twoColumn){
+            return 2;
+        }else if (width>twoColumn &&  width <= threeColumn) {
+            return 3;
+        }else if (width>threeColumn){
+            return 4;
+        }
+
+    }
+
+}
+   </script>
+   <!-- end metrics_complete_override block -->
+  </meta>
+ </head>
+ <body class="body " data-offset="50" data-spy="scroll" data-target=".subnav" data-webtype="story" id="body">
+  <i class="jsinclude" data-key="qualtrics_id" data-literal="false" data-value="ZN_7WH4Bo5lw2Ju5Mw" style="display:none">
+  </i>
+  <div id="ZN_7WH4Bo5lw2Ju5Mw">
+  </div>
+  <!-- Interscroller ad -->
+  <div class="PX01 cm-ad default" id="cm-ad-PX01">
+  </div>
+  <script style="display:none">
+   googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([1, 1]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'PX01',
+                    id: 'cm-ad-PX01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'PX01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+            });
+  </script>
+  <div class="NS01 cm-ad default" id="cm-ad-NS01">
+  </div>
+  <script style="display:none">
+   googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([1, 1]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'NS01',
+                    id: 'cm-ad-NS01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'NS01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+            });
+  </script>
+  <div class="retargeting-pixel retargeting-pixel-header" style="display:none">
+  </div>
+  <i class="jsinclude" data-key="currentSite" data-literal="false" data-value="https://www.myajc.com" style="display:none">
+  </i>
+  <script src="https://membercenter.ajc.com/sdk.js">
+  </script>
+  <i class="jsinclude" data-key="mc_prod" data-literal="true" data-value="true" style="display:none">
+  </i>
+  <i class="jsinclude" data-key="membercenter_url" data-literal="false" data-value="https://membercenter.ajc.com" style="display:none">
+  </i>
+  <div class="wallpaper-ad">
+   <div class="HS01 cm-ad default" id="cm-ad-HS01">
+   </div>
+   <script style="display:none">
+    googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([1, 1]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([1, 1]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'HS01',
+                    id: 'cm-ad-HS01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'HS01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [1, 768, 972];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+   </script>
+  </div>
+  <!-- begin breaking_news_override block -->
+  <!-- pubEndDateFull Thu Mar 07 12:59:00 EST 2019 -->
+  <!-- pubEndDateEom 20190307175900 -->
+  <!-- firstPubDateEom 20190307130100 -->
+  <!-- pubEndDateFull Thu Mar 07 12:59:00 EST 2019 -->
+  <!-- firstPubDateFull Thu Mar 07 08:01:00 EST 2019 -->
+  <!-- article with expiration, we force a refresh at expiration time (+ one minute) -->
+  <!-- refresh at: 2019-03-07T12:60:00 -->
+  <div class="wrapper news-banner-wrapper js-news-banner-closable hidden" data-breaking-news-expires="1551981540000" data-breaking-news-id="befdd4ce-40d8-11e9-bcf7-eb5900fab6a3">
+   <div class="news-banner news-banner--breaking">
+    <h2 class="news-banner__prefix">
+     AJC at the Gold Dome
+    </h2>
+    <p class="news-banner__content">
+     <a class="news-banner__content__link js-metrics-news-banner-link" href="/news/state--regional-govt--politics/live-track-georgia-bills/TEi8745IiqQpoXp3tDV9EO/">
+      Use our live AJC Bill Tracker to follow today’s legislative session
+     </a>
+    </p>
+    <img alt="close news banner" class="news-banner__close js-news-banner-close" src="/r/PortalConfig/np-one/assets-one/images/icons/close.svg"/>
+   </div>
+  </div>
+  <!-- end breaking_news_override block -->
+  <!-- begin header_override block -->
+  <div class="wrapper wrapper--header story-page">
+   <!--    <div class="wrapper wrapper--header"> -->
+   <header class="container header">
+    <div class="header-mobile-container">
+     <div class="nav-menu-toggle">
+      <div class="nav-flyout-btn">
+      </div>
+     </div>
+     <div class="header__logo header__logo-container">
+      <a class="header-mobile-container__link myajc" href="/" title="www.myajc.com">
+       <span class="header__mobile-logo__image">
+        <img class="myajc" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-full.svg">
+        </img>
+       </span>
+       <span class="header__mobile-pinned-logo__image">
+        <img class="myajc" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-short.svg"/>
+       </span>
+       <img alt="www.myajc.com Logo" class="header__desktop-logo__image myajc" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-full.svg"/>
+      </a>
+     </div>
+     <div class="main-nav__user-desktop main-nav__user-mobile-pinned">
+      <div class="nav-auth js-nav-auth">
+       <div class="nav-auth__anon-user">
+        <div class="nav-auth__anon-user__icon js-auth-login">
+         <div class="nav-auth__anon-user__icon__img">
+          <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon.svg"/>
+         </div>
+        </div>
+       </div>
+       <div class="nav-auth__authed-user">
+        <a class="nav-auth__authed-user__icon main-nav__item__link js-user-profile" href="#">
+         <div class="nav-auth__authed-user__icon__img">
+          <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-mobile.svg"/>
+         </div>
+         <img class="nav-auth__authed-user__icon__avatar js-user-avatar">
+         </img>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <nav class="sticky-nav">
+     <ul class="story-nav clearfix">
+      <li class="story-nav__item js-metrics-social-share">
+       <a class="story-nav__icon story-nav__facebook-icon" data-height="280" data-metrics-element="facebook" data-metrics-element-subtitle="social-widget-top" data-width="600" href="//www.facebook.com/share.php?u=https%3A%2F%2Fwww.myajc.com%2Fnews%2Fstate--regional-govt--politics%2Fsocial-media-reacts-stacey-abrams-state-the-union-response%2FVnQ0wAxSTdpEziZTpow9mL%2F&amp;title=Social%20media%20reacts%20to%20Stacey%20Abrams%E2%80%99%20State%20of%20the%20Union%20response" target="_blank" title="Share on Facebook">
+        <span class="sr-only">
+         Share on Facebook
+        </span>
+       </a>
+      </li>
+      <li class="story-nav__item js-metrics-social-share">
+       <a class="story-nav__icon story-nav__twitter-icon" data-height="280" data-metrics-element="twitter" data-metrics-element-subtitle="social-widget-top" data-width="600" href="//twitter.com/intent/tweet?url=https%3A%2F%2Fwww.myajc.com%2Fnews%2Fstate--regional-govt--politics%2Fsocial-media-reacts-stacey-abrams-state-the-union-response%2FVnQ0wAxSTdpEziZTpow9mL%2F&amp;text=Social%20media%20reacts%20to%20Stacey%20Abrams%E2%80%99%20State%20of%20the%20Union%20response" target="_blank" title="Share on Twitter">
+        <span class="sr-only">
+         Share on Twitter
+        </span>
+       </a>
+       <li class="story-nav__item">
+        <a class="story-nav__icon story-nav__down-arrow-icon">
+        </a>
+       </li>
+       <ul class="story-nav__mobile-dropdown">
+        <li class="story-nav__item">
+         <a class="story-nav__icon story-nav__up-arrow-icon">
+         </a>
+        </li>
+        <li class="story-nav__item js-metrics-social-share">
+         <a class="story-nav__icon story-nav__pinterest-icon" data-height="700" data-metrics-element="pinterest" data-metrics-element-subtitle="social-widget-top" data-width="850" href="//pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.myajc.com%2Fnews%2Fstate--regional-govt--politics%2Fsocial-media-reacts-stacey-abrams-state-the-union-response%2FVnQ0wAxSTdpEziZTpow9mL%2F&amp;media=https%3A%2F%2Fwww.myajc.com%2Frf%2Fimage_inline%2FPub%2Fp9%2FAJC%2F2018%2F11%2F23%2FImages%2FABRAMS_FINAL_AP21.JPG&amp;description=Social%20media%20reacts%20to%20Stacey%20Abrams%E2%80%99%20State%20of%20the%20Union%20response" target="_blank" title="Share on Pinterest">
+          <span class="sr-only">
+           Share on Pinterest
+          </span>
+         </a>
+        </li>
+        <li class="story-nav__item js-metrics-social-share">
+         <a class="story-nav__icon story-nav__reddit-icon" data-height="700" data-metrics-element="reddit" data-metrics-element-subtitle="social-widget-top" data-width="850" href="//www.reddit.com/submit?url=https%3A%2F%2Fwww.myajc.com%2Fnews%2Fstate--regional-govt--politics%2Fsocial-media-reacts-stacey-abrams-state-the-union-response%2FVnQ0wAxSTdpEziZTpow9mL%2F&amp;title=Social%20media%20reacts%20to%20Stacey%20Abrams%E2%80%99%20State%20of%20the%20Union%20response" target="_blank" title="Share on Reddit">
+          <span class="sr-only">
+           Share on Reddit
+          </span>
+         </a>
+        </li>
+        <li class="story-nav__item js-metrics-social-share">
+         <a class="story-nav__icon story-nav__email-icon" data-height="400" data-metrics-element="email" data-metrics-element-subtitle="social-widget-top" data-width="600" href="mailto:?Subject=Social%20media%20reacts%20to%20Stacey%20Abrams%E2%80%99%20State%20of%20the%20Union%20response&amp;Body=Stacey%20Abrams%20became%20the%20first%20black%20woman%20and%20the%20first%20Georgian%20to%20give%20the%20response%20to%20the%20State%20of%20the%20Union%20speech%20Tuesday%20night.She%20spoke%20for%20about%2010%20minutes%20after%20President%20Donald%20Trump%20highlighting%20bipartisan%20efforts%20in%20Georgia%20to%20overhaul%20the%20criminal%20justice%20system%20and%20slammed%20the%20federal%20government%20shutdown.But%20long%20before%20her%20speech%20began%20she%20was%20already%20getting%20advice%20about%20what%20to...https%3A%2F%2Fwww.myajc.com%2Fnews%2Fstate--regional-govt--politics%2Fsocial-media-reacts-stacey-abrams-state-the-union-response%2FVnQ0wAxSTdpEziZTpow9mL%2F" title="Share via Email">
+          <span class="sr-only">
+           Share via Email
+          </span>
+         </a>
+        </li>
+        <li class="story-nav__item">
+         <a class="story-nav__icon story-nav__comment-icon comments-header" href="">
+         </a>
+        </li>
+       </ul>
+       <li class="story-nav__item story-nav__user-icon">
+        <div class="nav-auth js-nav-auth">
+         <div class="nav-auth__anon-user">
+          <a class="nav-auth__anon-user__icon js-auth-login" href="#">
+           <div class="nav-auth__anon-user__icon__img">
+            <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon.svg"/>
+           </div>
+           <div class="nav-auth__anon-user__icon__text">
+            Log In
+           </div>
+          </a>
+         </div>
+         <div class="nav-auth__authed-user">
+          <a class="nav-auth__authed-user__icon main-nav__item__link">
+           <div class="nav-auth__authed-user__icon__img">
+            <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-desktop.svg"/>
+           </div>
+           <img class="nav-auth__authed-user__icon__avatar js-user-avatar">
+           </img>
+          </a>
+          <div class="nav-auth__authed-user__flyout-label main-nav__flyout__section-name">
+           <a class="nav-auth__authed-user__flyout-label__icon main-nav__item__link">
+            <div class="nav-auth__authed-user__flyout-label__icon__img">
+             <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-desktop.svg"/>
+            </div>
+            <img class="nav-auth__authed-user__flyout-label__icon__avatar js-user-avatar">
+            </img>
+           </a>
+           <div class="nav-auth__authed-user__flyout-label__overlay main-nav__flyout__section-name--overlay">
+           </div>
+          </div>
+          <div class="main-nav__flyout nav-auth__authed-user__flyout js-auth-flyout">
+           <div class="nav-auth__authed-user__flyout__title">
+            <a class="js-user-name js-user-profile" href="#">
+            </a>
+           </div>
+           <ul class="main-nav__flyout-subnav js-auth-flyout-subnav" item-count="4">
+            <li class="main-nav__flyout-subnav__item js-auth-item hidden">
+             <a href="#">
+             </a>
+            </li>
+           </ul>
+           <div class="nav-auth__authed-user__flyout__logout">
+            <a class="nav-auth__authed-user__flyout__logout__btn js-auth-logout" href="#">
+             Logout
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </li>
+      </li>
+     </ul>
+     <ul class="main-nav">
+      <li class="main-nav__item main-nav--sticky-logo">
+       <a class="main-nav__item__logo" href="/">
+        <img alt="www.myajc.com Logo" class="myajc" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-short.svg"/>
+       </a>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="" data-name="Frontpage">
+       <a class="main-nav__item__link" href="/" target="_self">
+        Frontpage
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item selected" data-id="" data-name="News">
+       <a class="main-nav__item__link">
+        News
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__item--selected">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         News
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="14">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/" target="_self">
+           All News
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/atlanta-news/" target="_self">
+           Local News
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/weather/" target="_self">
+           Local         Weather
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/traffic/" target="_self">
+           Local         Traffic
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/investigations/" target="_self">
+           AJC Investigations
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/crime/" target="_self">
+           Crime
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/education/" target="_self">
+           Education
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/business/" target="_self">
+           Business
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/nation-world/" target="_self">
+           Nation &amp; World
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/voices/" target="_self">
+           AJC         Columnists
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/opinion/" target="_self">
+           Opinion
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/voices/breakdown/" target="_self">
+           Breakdown
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/data/" target="_self">
+           Interactives/Data
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/ajcjobs/" target="_self">
+           Jobs
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="politics" data-name="Politics">
+       <a class="main-nav__item__link">
+        Politics
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         Politics
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="9">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/georgia-government/" target="_self">
+           All Politics
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/political-insider-blog/" target="_self">
+           Political Insider
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/georgia-state-legislature/" target="_self">
+           Legislature
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/issues/" target="_self">
+           Issues
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/election/" target="_self">
+           Elections
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/georgia-politics-voices/" target="_self">
+           Columnists
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/national-politics/" target="_self">
+           National
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/state--regional-govt--politics/how-contact-your-lawmakers-and-get-involved-georgia-politics/WY5agdUCcpWRNDHKbm7YKP/" target="_self">
+           Take Action
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/voices/luckovich-blog/" target="_self">
+           Mike Luckovich
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="" data-name="County by County">
+       <a class="main-nav__item__link">
+        County by County
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         County by County
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="8">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/" target="_self">
+           All County by County
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/clayton/" target="_self">
+           Clayton
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/cobb/" target="_self">
+           Cobb
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/dekalb/" target="_self">
+           DeKalb
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/gwinnett/" target="_self">
+           Gwinnett
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/north-fulton/" target="_self">
+           North Fulton
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/neighborhoods/atlanta-intown/" target="_self">
+           Intown Atlanta
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/local-govt--politics/gwinnett-upcoming-marta-referendum-comprehensive-voter-guide/CVj5YhwsvzesGoX29o0xvL/" target="_self">
+           Gwinnett MARTA referendum
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="" data-name="Things To Do">
+       <a class="main-nav__item__link">
+        Things To Do
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         Things To Do
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="12">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/go-guide/" target="_self">
+           All Things To Do
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="https://events.ajc.com/home" target="_blank">
+           Events in Atlanta
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/food/atlanta-restaurants-blog/" target="_self">
+           Atlanta Restaurants
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/music-blog/" target="_self">
+           Atlanta Music Scene
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/things-to-do/buford-highway-dining-guide/" target="_self">
+           AJC Dining Guides
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/food/" target="_self">
+           Food         &amp; Recipes
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/radiotvtalk-blog/" target="_self">
+           Radio &amp; TV
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/flashback/" target="_self">
+           Flashback Photos
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="https://games.ajc.com/" target="_blank">
+           Puzzles         &amp; Games
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/the-a-list/" target="_self">
+           My         Atlanta
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/podcasts/" target="_self">
+           Podcasts
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="https://www.ajc.com/peachtree/" target="_self">
+           AJC Peachtree Road Race
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="living" data-name="Life">
+       <a class="main-nav__item__link">
+        Life
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         Life
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="12">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/" target="_self">
+           All Life
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/buzz-blog/" target="_self">
+           Celebrity Buzz
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/talk-town-blog/" target="_self">
+           Talk of the Town
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/life/home-garden/" target="_self">
+           Home &amp; Garden
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/health-news/BI5FoTVo4SGUtuoI5fp8DL/" target="_self">
+           Health
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/travel/" target="_self">
+           Travel
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/living/sunday-living-arts/" target="_self">
+           Atlanta Living &amp; Arts
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="https://classifieds.ajc.com/" target="_blank">
+           Classifieds
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/obituaries/" target="_self">
+           Obituaries
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/video/Fsahkc3p7ItDwBqiOF1oGP/" target="_self">
+           Videos
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/news/photos/JwxCP0l6c3vJ6M3qFPysrO/" target="_self">
+           Photos
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="https://clark.com/" target="_self">
+           Clark Howard
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar js-main-nav__primary-item " data-id="" data-name="Sports">
+       <a class="main-nav__item__link">
+        Sports
+       </a>
+       <div class="main-nav__item--circle">
+       </div>
+       <div class="main-nav__flyout__section-name">
+        <a class="main-nav__item__link">
+         Sports
+        </a>
+        <div class="main-nav__flyout__section-name--overlay">
+        </div>
+       </div>
+       <div class="main-nav__flyout js-main-nav-flyout">
+        <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="11">
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/sports/" target="_self">
+           All Sports
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/atlanta-braves/" target="_self">
+           Braves/MLB
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/georgia-bulldogs/" target="_self">
+           UGA/DawgNation
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/atlanta-falcons/" target="_self">
+           Falcons/NFL
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/atlanta-united/" target="_self">
+           Atlanta United/MLS
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/georgia-tech/" target="_self">
+           Georgia Tech/ACC
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/atlanta-hawks/" target="_self">
+           Hawks/NBA
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/high-school-sports/" target="_self">
+           High Schools
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="//ajc.stats.com/" target="_blank">
+           Scores &amp; Stats
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/state-report/" target="_self">
+           State Report
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item">
+          <a href="/sports/in-the-game/" target="_self">
+           In The Game with Harrah’s
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="main-nav__item main-nav__item--bottom-bar">
+       <span class="main-nav__item--separater-bar">
+       </span>
+      </li>
+      <li class="main-nav__item main-nav__item--bottom-bar main-nav__item__epaper">
+       <a class="main-nav__item__link" href="https://www.ajc.com/epaper" target="_blank">
+        ePaper
+       </a>
+      </li>
+      <li class="main-nav__item main-nav__item--bottom-bar main-nav__item__search-desktop">
+       <form class="main-nav__item__search">
+        <input class="main-nav__item__search__input" id="search" name="q" type="text" value=""/>
+        <img class="main-nav__search-icon" src="/r/PortalConfig/np-one/assets-one/images/icons/search-icon.svg">
+        </img>
+       </form>
+      </li>
+      <li class="main-nav__item main-nav__weather-icon-desktop">
+       <a class="main-nav__weather-icon-link" href="/weather/">
+        <div class="weather-monochrome weather-12">
+        </div>
+       </a>
+      </li>
+      <li class="main-nav__item main-nav__weather-temp-desktop">
+       <a class="main-nav__weather-temp-text" href="/weather/">
+        46°
+       </a>
+      </li>
+      <li class="main-nav__item main-nav__user-desktop">
+       <div class="nav-auth js-nav-auth">
+        <div class="nav-auth__anon-user">
+         <a class="nav-auth__anon-user__icon js-auth-login" href="#">
+          <div class="nav-auth__anon-user__icon__img">
+           <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon.svg"/>
+          </div>
+          <div class="nav-auth__anon-user__icon__text">
+           Log In
+          </div>
+         </a>
+        </div>
+        <div class="nav-auth__authed-user">
+         <a class="nav-auth__authed-user__icon main-nav__item__link">
+          <div class="nav-auth__authed-user__icon__img">
+           <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-desktop.svg"/>
+          </div>
+          <img class="nav-auth__authed-user__icon__avatar js-user-avatar">
+          </img>
+         </a>
+         <div class="nav-auth__authed-user__flyout-label main-nav__flyout__section-name">
+          <a class="nav-auth__authed-user__flyout-label__icon main-nav__item__link">
+           <div class="nav-auth__authed-user__flyout-label__icon__img">
+            <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-desktop.svg"/>
+           </div>
+           <img class="nav-auth__authed-user__flyout-label__icon__avatar js-user-avatar">
+           </img>
+          </a>
+          <div class="nav-auth__authed-user__flyout-label__overlay main-nav__flyout__section-name--overlay">
+          </div>
+         </div>
+         <div class="main-nav__flyout nav-auth__authed-user__flyout js-auth-flyout">
+          <div class="nav-auth__authed-user__flyout__title">
+           <a class="js-user-name js-user-profile" href="#">
+           </a>
+          </div>
+          <ul class="main-nav__flyout-subnav js-auth-flyout-subnav" item-count="4">
+           <li class="main-nav__flyout-subnav__item js-auth-item hidden">
+            <a href="#">
+            </a>
+           </li>
+          </ul>
+          <div class="nav-auth__authed-user__flyout__logout">
+           <a class="nav-auth__authed-user__flyout__logout__btn js-auth-logout" href="#">
+            Logout
+           </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </li>
+      <!-- end header_desktop_account_override block -->
+     </ul>
+    </nav>
+    <div class="header__subscribe-bar">
+     <a class="header__subscribe-bar__link" href="#">
+      <span>
+       Worth knowing. Worth supporting.
+      </span>
+      <span class="bold">
+       Subscribe today for $1.00
+      </span>
+     </a>
+    </div>
+   </header>
+  </div>
+  <div class="page-padding">
+  </div>
+  <!-- end header_override block -->
+  <div id="page-content-wrapper">
+   <div class="container main-container">
+    <div class="retargeting-pixel retargeting-pixel-body" style="display:none">
+    </div>
+    <div class="cm-channel-root niche-page-root clearfix">
+     <!-- begin content_override block -->
+     <header class="tease tease--row--desktop story-header story-header--photo">
+      <div class="img-responsive tease__img tease__img--ndnvideo">
+      </div>
+      <div class="tease__img tease__img--photo">
+       <div class="img-fluid">
+        <img id="U36330080504WOL" sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 840px, (min-width: 1280px) 1070px" src="/rf/image_inline/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG" srcset="/rf/image_inline/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG 365w,/rf/image_md/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG 400w,/rf/image_large/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG 800w,/rf/image_lowres/Pub/p9/AJC/2018/11/23/Images/ABRAMS_FINAL_AP21.JPG 1000w"/>
+       </div>
+       <div class="photo__caption__toggle">
+        <div class="fill-line fill-line--long">
+        </div>
+        <div class="fill-line">
+        </div>
+        <div class="fill-line fill-line--long">
+        </div>
+        <div class="fill-line">
+        </div>
+        <div class="fill-line fill-line--long">
+        </div>
+       </div>
+       <div class="photo__caption">
+        <div class="photo__caption__text">
+         11/02/2018 -- Atlanta, Georgia -- Georgia Gubernatorial candidate Stacey Abrams listens as former President Barack Obama speaks during a rally for in Forbes Arena at Morehouse College, Friday, November 2, 2018. (ALYSSA POINTER/ALYSSA.POINTER@AJC.COM)
+         <div class="photo__credit__text hidden--large">
+          Photo: Alyssa Pointer
+         </div>
+        </div>
+       </div>
+       <div class="photo__credit">
+        <div class="photo__credit__text">
+         Photo: Alyssa Pointer
+        </div>
+       </div>
+      </div>
+      <div class="tease__content tease__content--long-headline">
+       <div class="tease__text">
+        <h1 class="tease__heading" data-character-count="71">
+         Social media reacts to Stacey Abrams’ State of the Union response
+        </h1>
+       </div>
+      </div>
+     </header>
+     <div class="container">
+      <div class="byline tease__details">
+       <a class="label" href="/news/national-politics/">
+        National Politics
+       </a>
+       <!-- 20190206045600 / 20190307165303 (update time / now) -->
+       <div class="tease__timestamp">
+        <time class="timestamp" data-pubdate="Feb 05, 2019" data-shorthandformat="" data-timestamp="02/06/2019 04:56:00 GMT" data-timestamp-original="20190206045600" data-updated="true">
+        </time>
+       </div>
+       <div class="names">
+       </div>
+      </div>
+     </div>
+     <article class="container">
+      <div class="story-text clearfix">
+       <div class="ad-container hidden--medium hidden--large">
+        <div class="MP01 cm-ad default" id="cm-ad-MP01">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([320, 50]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                        sizes.push([320, 50]);
+                    
+                        sizes.push([320, 150]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'MP01',
+                    id: 'cm-ad-MP01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'MP01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [1];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <div class="ad-container hidden--small">
+        <div class="HP01 cm-ad default" id="cm-ad-HP01">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([728, 90]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([728, 90]);
+                    
+                        sizes.push([728, 315]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([728, 90]);
+                    
+                        sizes.push([970, 250]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'HP01',
+                    id: 'cm-ad-HP01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'HP01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [768, 972];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <!-- paragraph: 1 / 33 -->
+       <div class="full-width ">
+        <p class="p">
+         Stacey Abrams became the first black woman and the first Georgian to give the response to the State of the Union speech Tuesday night.
+        </p>
+       </div>
+       <div class="story-rail not-sticky hidden--small hidden--medium">
+        <div class="ad-container">
+         <div class="RP01 cm-ad default" id="cm-ad-RP01">
+         </div>
+         <script style="display:none">
+          googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'RP01',
+                    id: 'cm-ad-RP01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'RP01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [972];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+         </script>
+        </div>
+       </div>
+       <!-- paragraph: 2 / 33 -->
+       <p class="p">
+        She
+        <a href="https://www.ajc.com/blog/politics/stacey-abrams-tout-bipartisanship-and-slam-shutdown-disgrace-sotu-rebuttal/xp4NT5lJppPWS9YpImEqmO/" shape="rect" target="_blank">
+         spoke for about 10 minutes
+        </a>
+        after President Donald Trump highlighting bipartisan efforts in Georgia to overhaul the criminal justice system and slammed the federal government shutdown.
+       </p>
+       <div class="ad-container hidden--medium hidden--large">
+        <div class="MP02 cm-ad default" id="cm-ad-MP02">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'MP02',
+                    id: 'cm-ad-MP02',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'MP02'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [1];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <div class="ad-container hidden--small hidden--large">
+        <div class="RP01 cm-ad default" id="cm-ad-RP01">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'RP01',
+                    id: 'cm-ad-RP01',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'RP01'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [768];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <!-- paragraph: 3 / 33 -->
+       <p class="p">
+        But long before her speech began she was already getting advice about what to say.
+       </p>
+       <!-- If Nativo is enabled and story is not 'short,' display Nativo-MOAP -->
+       <div class="story-nativo_placeholder--moap story-rail_break">
+       </div>
+       <!-- paragraph: 4 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          .
+          <a href="https://twitter.com/staceyabrams?ref_src=twsrc%5Etfw">
+           @staceyabrams
+          </a>
+          a suggestion for your opening statement in tonight’s
+          <a href="https://twitter.com/hashtag/SOTU?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU
+          </a>
+          response: start by conceding the Georgia governor's race.
+         </p>
+         — Rep. Doug Collins (@RepDougCollins)
+         <a href="https://twitter.com/RepDougCollins/status/1092951397732093953?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 5 / 33 -->
+       <p>
+        After the November election, Abrams ended her campaign for Georgia governor against Republican Brian Kemp, but
+        <a href="https://www.ajc.com/news/state--regional-govt--politics/stacey-abrams-defiant-speech-delights-supporters-irks-critics/fxfZOE2x9xVKGu9xN0g42H/" shape="rect" target="_blank">
+         she did not concede the election
+        </a>
+        , and said she planned to launch a voting rights group to file “major” litigation challenging election policies instead.
+       </p>
+       <div class="story-interscroller__placeholder full-width">
+       </div>
+       <!-- paragraph: 6 / 33 -->
+       <p>
+        But for Abrams supporters the night was her time to shine. Many of them claimed to boycott Trump’s speech or waited impatiently for hers.
+       </p>
+       <!-- paragraph: 7 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Me waiting for
+          <a href="https://twitter.com/staceyabrams?ref_src=twsrc%5Etfw">
+           @staceyabrams
+          </a>
+          response like...
+          <a href="https://twitter.com/hashtag/StateOfTheUnion?src=hash&amp;ref_src=twsrc%5Etfw">
+           #StateOfTheUnion
+          </a>
+          <a href="https://twitter.com/hashtag/SOTU19?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU19
+          </a>
+          <a href="https://twitter.com/hashtag/SOTUResponse?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTUResponse
+          </a>
+          <a href="https://twitter.com/hashtag/sotu?src=hash&amp;ref_src=twsrc%5Etfw">
+           #sotu
+          </a>
+          <a href="https://twitter.com/hashtag/StateOfTheWoman?src=hash&amp;ref_src=twsrc%5Etfw">
+           #StateOfTheWoman
+          </a>
+          <a href="https://t.co/kcONRWfcMN">
+           pic.twitter.com/kcONRWfcMN
+          </a>
+         </p>
+         — Special K from ‘round da way 👩🏾 (@KrisHuston77)
+         <a href="https://twitter.com/KrisHuston77/status/1092972623229792259?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 8 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Waiting for the
+          <a href="https://twitter.com/hashtag/SOTU?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU
+          </a>
+          to be over....  reflecting on what real leadership sounds like.  Can't wait for the
+          <a href="https://twitter.com/hashtag/AbramsAddress?src=hash&amp;ref_src=twsrc%5Etfw">
+           #AbramsAddress
+          </a>
+          <a href="https://t.co/jdjSCwfzWg">
+           pic.twitter.com/jdjSCwfzWg
+          </a>
+         </p>
+         — Emma Pinter (@ehpinter)
+         <a href="https://twitter.com/ehpinter/status/1092978367517741057?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- <div class="story-rail__break"></div> -->
+       <div class="story-rail hidden--small hidden--medium desktop-RP09">
+        <div class="ad-container sticky-element">
+         <div class="RP09 cm-ad default" id="cm-ad-RP09">
+         </div>
+         <script style="display:none">
+          googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'RP09',
+                    id: 'cm-ad-RP09',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'RP09'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [972];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+         </script>
+        </div>
+       </div>
+       <div class="ad-container hidden--medium hidden--large">
+        <div class="MP03 cm-ad default" id="cm-ad-MP03">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'MP03',
+                    id: 'cm-ad-MP03',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'MP03'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [1];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <div class="ad-container hidden--small hidden--large">
+        <div class="RP09 cm-ad default" id="cm-ad-RP09">
+        </div>
+        <script style="display:none">
+         googletag.cmd.push(function () {
+                
+                var defaultSizes = [];
+                
+                    defaultSizes.push([300, 250]);
+                
+                var mapping = googletag.sizeMapping();
+                var sizes = [];
+                
+                    sizes = [];
+                    
+                    mapping.addSize(
+                        [1, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [972, 1], sizes
+                    );
+                
+                    sizes = [];
+                    
+                        sizes.push([300, 250]);
+                    
+                        sizes.push([300, 600]);
+                    
+                    mapping.addSize(
+                        [768, 1], sizes
+                    );
+                
+                var conf = {
+                    name: 'RP09',
+                    id: 'cm-ad-RP09',
+                    sizes: defaultSizes,
+                    group: 'default',
+                    adunit: cmg.adconf.adunit,
+                    outofpage: false,
+                    companion: false,
+                    mapping: mapping.build(),
+                    targeting: {
+                        ad_slot: 'RP09'
+                    }
+                };
+                cmg.adconf.slotconf.push(conf);
+                var slot = harmony.defineSlot(conf);
+
+                
+                    if (slot) {
+                        
+                        var bpMap = {},
+                            activeBPs = [768];
+                        activeBPs.forEach(function (bp) {
+                            bpMap[bp] = true;
+                        });
+
+                        
+                        harmony.on('update/slots', function (bp) {
+                            slot.enabled = bp in bpMap;
+                        }, true);
+                    }
+                
+            });
+        </script>
+       </div>
+       <!-- paragraph: 9 / 33 -->
+       <p class="p">
+        For the biggest
+        <a href="https://www.ajc.com/news/state--regional-govt--politics/abrams-prepares-counterpunch-trump-state-union/EA3f6IyrekRms1eHjzKDeP/" shape="rect">
+         speech of her political career
+        </a>
+        , the voting rights group she started shortly after her defeat –
+        <a href="https://www.ajc.com/blog/politics/stacey-abrams-readies-nationwide-roll-out-for-sotu-response/ZvxRXS2e6lZXHTLoEseW3O/" shape="rect" target="_blank">
+         Fair Fight Action— organized watch parties
+        </a>
+        around the country.
+       </p>
+       <!-- paragraph: 10 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          <a href="https://twitter.com/hashtag/AbramsAddress?src=hash&amp;ref_src=twsrc%5Etfw">
+           #AbramsAddress
+          </a>
+          dc watch party is officially lit ⁦
+          <a href="https://twitter.com/fairfightaction?ref_src=twsrc%5Etfw">
+           @fairfightaction
+          </a>
+          ⁩
+          <a href="https://t.co/Ceboom1rkS">
+           pic.twitter.com/Ceboom1rkS
+          </a>
+         </p>
+         — Abhi Rahman (@obes_1)
+         <a href="https://twitter.com/obes_1/status/1092978399952412672?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 11 / 33 -->
+       <p class="p">
+        Abrams deliverd her remarks from the HQ of the IBEW labor union in downtown Atlanta, and started her speech with a nod to the Lunar New Year and a story about her working-class parents.
+       </p>
+       <!-- paragraph: 12 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Stacey Abrams already wins for wishing me a
+          <a href="https://twitter.com/hashtag/HappyLunarNewYear?src=hash&amp;ref_src=twsrc%5Etfw">
+           #HappyLunarNewYear
+          </a>
+          .
+          <a href="https://twitter.com/hashtag/SOTUResponse?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTUResponse
+          </a>
+         </p>
+         — Kristina Womp-Wong ❄️ (@mskristinawong)
+         <a href="https://twitter.com/mskristinawong/status/1092991603554148352?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 13 / 33 -->
+       <p class="p">
+        Abrams didn’t mention any plans for her political future, but plenty of people had thoughts on her next steps.
+       </p>
+       <!-- paragraph: 14 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Stacey Abrams is presidential. Skip the Senate, Stacey. Run for president.
+         </p>
+         — Broderick Greer (@BroderickGreer)
+         <a href="https://twitter.com/BroderickGreer/status/1092993788828504065?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 15 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+       </div>
+       <!-- paragraph: 16 / 33 -->
+       <p class="p">
+        But not everyone was ready for that.
+       </p>
+       <!-- paragraph: 17 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          I think she missed the boat.  This is not a response to the SOTU.  This is a poorly written monologue about her losing her election.
+          <a href="https://twitter.com/hashtag/SOTUResponse?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTUResponse
+          </a>
+         </p>
+         — Julie Kay (@RedHeadedYooper)
+         <a href="https://twitter.com/RedHeadedYooper/status/1092994086032809984?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 18 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Why did the
+          <a href="https://twitter.com/hashtag/Democrats?src=hash&amp;ref_src=twsrc%5Etfw">
+           #Democrats
+          </a>
+          pick Stacey Abrams to reply to
+          <a href="https://twitter.com/hashtag/POTUS?src=hash&amp;ref_src=twsrc%5Etfw">
+           #POTUS
+          </a>
+          .
+          <a href="https://twitter.com/hashtag/StaceyAbrams?src=hash&amp;ref_src=twsrc%5Etfw">
+           #StaceyAbrams
+          </a>
+          is out of her league and as articulate and persuasive as a painful root canal. A Non-Leader whose only claim to fame is losing a gubernatorial election 🇺🇸
+          <a href="https://twitter.com/hashtag/SOTU?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU
+          </a>
+          ⁠ ⁠
+          <a href="https://twitter.com/hashtag/SOTU2019?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU2019
+          </a>
+          ⁠ ⁠
+          <a href="https://twitter.com/hashtag/MAGA?src=hash&amp;ref_src=twsrc%5Etfw">
+           #MAGA
+          </a>
+          <a href="https://twitter.com/hashtag/Trump?src=hash&amp;ref_src=twsrc%5Etfw">
+           #Trump
+          </a>
+         </p>
+         — Melissa Sabarese (@msabarese)
+         <a href="https://twitter.com/msabarese/status/1092995005004898304?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 19 / 33 -->
+       <p class="p">
+        And they recalled some issues of her Georgia run for governor.
+       </p>
+       <!-- paragraph: 20 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Has
+          <a href="https://twitter.com/staceyabrams?ref_src=twsrc%5Etfw">
+           @staceyabrams
+          </a>
+          paid all her back taxes yet?
+          <a href="https://twitter.com/hashtag/SOTU?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTU
+          </a>
+          <a href="https://twitter.com/hashtag/SOTUResponse?src=hash&amp;ref_src=twsrc%5Etfw">
+           #SOTUResponse
+          </a>
+         </p>
+         — Jonathan Mason (@jgmason75)
+         <a href="https://twitter.com/jgmason75/status/1092991606377119745?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 21 / 33 -->
+       <p>
+        Abrams was dinged during the governor’s race for giving money to her campaign, instead of using that money to pay off her debts.
+       </p>
+       <!-- paragraph: 22 / 33 -->
+       <p>
+        Abrams
+        <a href="https://www.ajc.com/news/state--regional-govt--politics/abrams-banks-debt-advantage-final-stretch-gov-race/sTm0slTSKlYWE0XlNPjg9J/" shape="rect" target="_blank">
+         acknowledged her debts
+        </a>
+        , but she has said she was not shirking her obligation to pay them — just doing it through a payment plan.
+       </p>
+       <!-- paragraph: 23 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <hr/>
+       </div>
+       <!-- paragraph: 24 / 33 -->
+       <p>
+        WATCH |
+        <a href="https://www.ajc.com/news/stacy-abrams-discusses-her-debt/2f1QHv9iR7YwQ4Ghi3IkJI/" shape="rect" target="_blank">
+         Stacey Abrams discusses her debt
+        </a>
+       </p>
+       <!-- paragraph: 25 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <hr/>
+       </div>
+       <!-- paragraph: 26 / 33 -->
+       <p>
+        A prominent Georgia conservative graded Abrams’ speech.
+       </p>
+       <!-- paragraph: 27 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          A for Abrams' delivery.  F for the creepy backdrop.  And I disagree with her points, but she was wayyyyyy better than that Kennedy guy last year.
+         </p>
+         — Erick Erickson (@EWErickson)
+         <a href="https://twitter.com/EWErickson/status/1092995266066694144?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 28 / 33 -->
+       <p class="p">
+        The visuals were a big topic.
+       </p>
+       <!-- paragraph: 29 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Thoughts from a political video guy: So, the
+          <a href="https://twitter.com/TheDemocrats?ref_src=twsrc%5Etfw">
+           @TheDemocrats
+          </a>
+          did a nice job picking
+          <a href="https://twitter.com/staceyabrams?ref_src=twsrc%5Etfw">
+           @staceyabrams
+          </a>
+          , and she did well.
+          <br/>
+          <br/>
+          But you've backlit her too directly. It makes it look like she's standing in front of a green screen, and it's quite distracting.
+          <a href="https://t.co/1Mtbt6B48e">
+           pic.twitter.com/1Mtbt6B48e
+          </a>
+         </p>
+         — Jeremiah Cox (@JeremiahCox)
+         <a href="https://twitter.com/JeremiahCox/status/1092995176165982209?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 30 / 33 -->
+       <p class="p">
+        A political reporter wondered if the speech was a missed opportunity.
+       </p>
+       <!-- paragraph: 31 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          How much money would Stacey Abrams be raising tonight if she had an open campaign committee for a future office?
+         </p>
+         — Shane Goldmacher (@ShaneGoldmacher)
+         <a href="https://twitter.com/ShaneGoldmacher/status/1092992982695985153?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <!-- paragraph: 32 / 33 -->
+       <p>
+        And even Uncle Joe got in on the tweets
+       </p>
+       <!-- paragraph: 33 / 33 -->
+       <!-- The scriptblock tag represents a codeblock in Swing.  Codeblocks are always displayed centered. -->
+       <div class="inline-script-embed-container">
+        <blockquote class="twitter-tweet" data-lang="en">
+         <p dir="ltr" lang="en">
+          Stacey Abrams achieved in a matter of minutes something Donald Trump failed to do in over an hour -- to embrace and give voice to the spirit and core values that make America great.
+         </p>
+         — Joe Biden (@JoeBiden)
+         <a href="https://twitter.com/JoeBiden/status/1092999736624406528?ref_src=twsrc%5Etfw">
+          February 6, 2019
+         </a>
+        </blockquote>
+        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+        </script>
+       </div>
+       <div class="story-relateds full-width story-rail__break">
+        <!-- if we're using the old five-item-feature with col 3, put the headline back -->
+        <h2 class="tease-list__heading">
+         Related Stories
+        </h2>
+        <ul class="tease-list tease-list--top-image tease-list--top-photo tease-list--3-cols">
+         <li class="tease js-metrics-related">
+          <div class="tease__img img-fluid tease__img--top-photo">
+           <a href="/blog/politics/analysis-stacey-abrams-snaps-curse-state-union-response/rOSqmgY1jYZvcuwA8dICOP/" target="_self">
+            <!--  / top-photo / 3  -->
+            <img alt="Analysis: Stacey Abrams snaps ‘curse of State of Union response’  " class="img lazyload" data-sizes="(min-width: 1750px) 501.33333333333337px, (min-width: 1280px) 31.333333333333336vw, (min-width: 1024px) 31.333333333333336vw, (min-width: 768px) 100vw, 100vw" data-src="/rf/image_lowres/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx" data-srcset="/rf/image_compact/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 150w, /rf/image_inline/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 365w, /rf/image_medium/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 750w, /rf/image_lowres/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 1000w"/>
+           </a>
+          </div>
+          <div class="tease__content tease__content--top-photo">
+           <div class="tease__text">
+            <div class="tease__details">
+             <span class="label">
+              Only on AJC
+             </span>
+             <div class="tease__timestamp">
+              <time class="timestamp" data-pubdate="Feb 06, 2019" data-shorthandformat="true" data-timestamp="02/06/2019 11:00:00 GMT" data-timestamp-original="20190206110000" data-updated="false">
+              </time>
+             </div>
+            </div>
+            <h3 class="tease__heading">
+             <a class="tease__heading__link" href="/blog/politics/analysis-stacey-abrams-snaps-curse-state-union-response/rOSqmgY1jYZvcuwA8dICOP/" target="_self">
+              Analysis: Stacey Abrams snaps ‘curse of State of Union response’
+             </a>
+            </h3>
+           </div>
+          </div>
+         </li>
+         <li class="tease js-metrics-related">
+          <div class="tease__img img-fluid tease__img--top-photo">
+           <a href="https://www.ajc.com/blog/politics/stacey-abrams-tout-bipartisanship-and-slam-shutdown-disgrace-sotu-rebuttal/xp4NT5lJppPWS9YpImEqmO/" target="_self">
+            <!--  / top-photo / 3  -->
+            <img alt="Read: Stacey Abrams rebuttal to Trump’s State of the Union " class="img lazyload" data-sizes="(min-width: 1750px) 501.33333333333337px, (min-width: 1280px) 31.333333333333336vw, (min-width: 1024px) 31.333333333333336vw, (min-width: 768px) 100vw, 100vw" data-src="/rf/image_lowres/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx" data-srcset="/rf/image_compact/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 150w, /rf/image_inline/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 365w, /rf/image_medium/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 750w, /rf/image_lowres/Pub/p10/CmgSharedContent/2019/02/06/Videos/4587003.vpx 1000w"/>
+           </a>
+          </div>
+          <div class="tease__content tease__content--top-photo">
+           <div class="tease__text">
+            <div class="tease__details">
+             <div class="tease__timestamp">
+              <time class="timestamp" data-pubdate="Feb 05, 2019" data-shorthandformat="true" data-timestamp="02/06/2019 00:51:00 GMT" data-timestamp-original="20190206005100" data-updated="false">
+              </time>
+             </div>
+            </div>
+            <h3 class="tease__heading">
+             <a class="tease__heading__link" href="https://www.ajc.com/blog/politics/stacey-abrams-tout-bipartisanship-and-slam-shutdown-disgrace-sotu-rebuttal/xp4NT5lJppPWS9YpImEqmO/" target="_self">
+              Read: Stacey Abrams rebuttal to Trump’s State of the Union
+             </a>
+            </h3>
+           </div>
+          </div>
+         </li>
+        </ul>
+       </div>
+       <div id="taboola-below-article-thumbnails">
+       </div>
+       <script type="text/javascript">
+        window._taboola = window._taboola || [];
+      _taboola.push({
+        mode: 'thumbnails-feed-4x1',
+        container: 'taboola-below-article-thumbnails',
+        placement: 'AJC Custom Feed',
+        target_type: 'mix'
+      });
+       </script>
+       <div class="story-nativo__placeholder--boap full-width story-rail__break">
+       </div>
+      </div>
+      <div id="fb-root">
+      </div>
+      <script>
+       (function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+      </script>
+      <script>
+       function cmg_loadFbComments(container) {
+		        	let commentsDiv = document.createElement('div');
+		        	commentsDiv.setAttribute('class', 'fb-comments');
+		        	commentsDiv.setAttribute('data-href', 'https://www.myajc.com/news/state--regional-govt--politics/social-media-reacts-stacey-abrams-state-the-union-response/VnQ0wAxSTdpEziZTpow9mL/');
+		        	commentsDiv.setAttribute('data-mobile', 'auto-detect');
+                    commentsDiv.setAttribute('data-colorscheme', '');
+	                commentsDiv.setAttribute('data-numposts', '');
+	                commentsDiv.setAttribute('data-order-by', '');
+	                commentsDiv.setAttribute('data-width', '');
+		        	if (typeof container === 'undefined') {
+		        		// no container element was passed in, so default to the body
+		        		container = document.querySelector('body');
+		        	}
+		        	container.appendChild(commentsDiv);
+		        	if (typeof FB !== 'undefined') {
+		        		// initialize the comments plugin
+		        		// we pass in the container rather than the newly-created div because the fb sdk can only act on a pre-existing dom element
+		        		// see https://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse for more details
+		        	    FB.XFBML.parse(container);
+		        	}
+		        }
+      </script>
+      <div class="comment-desktop-container">
+       <div class="inner-close-container">
+        <div class="comments-close">
+         X
+        </div>
+       </div>
+       <div class="inner-comment-container">
+        <div class="comments-widget">
+        </div>
+       </div>
+      </div>
+     </article>
+     <!-- end content_override block -->
+    </div>
+   </div>
+   <div class="retargeting-pixel retargeting-pixel-footer" style="display:none">
+   </div>
+   <!-- begin footer_override block -->
+   <footer class="wrapper one-site">
+    <div class="container">
+     <div class="footer-heading footer--row">
+      <div class="footer-heading__logo">
+       <img alt="Footer Logo" class="footer-heading__logo-image myajc" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-full.svg"/>
+      </div>
+      <div class="footer-heading__email">
+       <a class="footer-heading__email-heading" href="https://hub.ajc.com/newsletters">
+        Sign up for our newsletters
+        <img alt="Footer Round Button" class="footer-heading__email-button" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-round-button.svg"/>
+       </a>
+      </div>
+     </div>
+     <div class="footer-menu footer--row">
+      <div aria-expanded="false" aria-haspopup="true" class="footer-menu__section">
+       <a class="footer-menu__dropdown-toggler" href="#">
+        <span class="footer-menu__section-heading">
+         About
+        </span>
+        <img alt="www.myajc.com Footer Menu Arrow" class="footer-menu__section__arrow" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-footer-menu-arrow.svg"/>
+       </a>
+       <ul class="footer-menu__section-options">
+        <li class="footer-menu__option-items">
+         <a href="//www.ajc.com/about/ajc-history/" target="_self" title="Our History">
+          Our History
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="" target="" title="">
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="/frequently-asked-questions/" target="_self" title="FAQ">
+          FAQ
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//jobs.coxmediagroup.com/location/atlanta-jobs/1646/6252001-4197000-4196508-4180439/4" target="_blank" title="Careers">
+          Careers
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div aria-expanded="false" aria-haspopup="true" class="footer-menu__section">
+       <a class="footer-menu__dropdown-toggler" href="#">
+        <span class="footer-menu__section-heading">
+         Contact
+        </span>
+        <img alt="www.myajc.com Footer Menu Arrow" class="footer-menu__section__arrow" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-footer-menu-arrow.svg"/>
+       </a>
+       <ul class="footer-menu__section-options">
+        <li class="footer-menu__option-items">
+         <a href="https://www.ajc.com/online/contact/RTua5WXfBxLIYMgUe6AerN/" target="_self" title="Contact Us">
+          Contact Us
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//www.ajc.com/marketing/atlanta-news-georgia-news-send-your-news-and-article-suggestions/wRL8MoFE7aoXKvGXT8506H/" target="_self" title="Send a News Tip">
+          Send a News Tip
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="http://www.ajcmediakit.com/" target="_blank" title="Advertise">
+          Advertise
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="/staff/" target="_self" title="AJC Newsroom">
+          AJC Newsroom
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div aria-expanded="false" aria-haspopup="true" class="footer-menu__section">
+       <a class="footer-menu__dropdown-toggler" href="#">
+        <span class="footer-menu__section-heading">
+         Subscriptions
+        </span>
+        <img alt="www.myajc.com Footer Menu Arrow" class="footer-menu__section__arrow" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-footer-menu-arrow.svg"/>
+       </a>
+       <ul class="footer-menu__section-options">
+        <li class="footer-menu__option-items">
+         <a href="//subscribe.ajc.com/printftr" target="_self" title="Print Subscription">
+          Print Subscription
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//subscribe.ajc.com/digitalftr" target="_self" title="Digital         Subscription">
+          Digital         Subscription
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//hub.ajc.com/your-account" target="_self" title="Manage         Subscription">
+          Manage         Subscription
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//hub.ajc.com/" target="_self" title="Your Profile">
+          Your Profile
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//www.ajc.com/news/the-making-real-journalism/XBk86C122Fzf78vqcw4mEK/" target="_self" title="Why Subscribe?">
+          Why Subscribe?
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//www.nieonline.com/ajc/" target="_blank" title="NIE/Newspapers         in Education">
+          NIE/Newspapers         in Education
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div aria-expanded="false" aria-haspopup="true" class="footer-menu__section">
+       <a class="footer-menu__dropdown-toggler" href="#">
+        <span class="footer-menu__section-heading">
+         Products
+        </span>
+        <img alt="www.myajc.com Footer Menu Arrow" class="footer-menu__section__arrow" name="www.myajc.com" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-footer-menu-arrow.svg"/>
+       </a>
+       <ul class="footer-menu__section-options">
+        <li class="footer-menu__option-items">
+         <a href="//epaper.ajc.com/" target="_blank" title="ePaper">
+          ePaper
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//hub.ajc.com/newsletters" target="_self" title="Newsletters">
+          Newsletters
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//www.ajc.com/podcasts/?icmp=ajc_internallink_podcast" target="_self" title="Podcasts">
+          Podcasts
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//itunes.apple.com/us/app/ajc-com/id414120752?mt=8" target="_blank" title="Download iOS App">
+          Download iOS App
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//play.google.com/store/apps/details?id=com.cmgdigital.AJCBreakingNews&amp;hl=en_US" target="_blank" title="Download Android App">
+          Download Android App
+         </a>
+        </li>
+        <li class="footer-menu__option-items">
+         <a href="//hub.ajc.com/text-alerts" target="_self" title="SMS         &amp; Alerts">
+          SMS         &amp; Alerts
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="footer-menu__section">
+       <a class="footer-menu__dropdown-toggler">
+        <span class="footer-menu__section-heading">
+         Follow
+        </span>
+       </a>
+       <div>
+        <a href="http://www.facebook.com/ajc" target="_blank">
+         <img alt="Footer Facebook Icon" class="footer-menu__section__facebook" name="" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-facebook-icon.svg"/>
+        </a>
+        <a href="http://www.twitter.com/ajc" target="_blank">
+         <img alt="Footer Twitter Icon" class="footer-menu__section__twitter" name="" src="/r/PortalConfig/np-one/assets-one/myajc/images/one-twitter-icon.svg"/>
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="footer-sub footer--row footer-sub__empty">
+     </div>
+     <div class="footer-terms">
+      <p>
+       ©
+       <span class="current-year">
+        2018
+       </span>
+       <a href="//www.coxmediagroup.com" target="_blank">
+        Cox Media Group
+       </a>
+       .
+			All Rights Reserved. By using this website, you accept the terms of our
+       <a href="/visitor_agreement/">
+        Visitor Agreement
+       </a>
+       and
+       <a href="/privacy_policy/">
+        Privacy Policy
+       </a>
+       , and understand your options regarding
+       <a href="/privacy_policy/#ad-choices">
+        Ad Choices
+       </a>
+       . Learn about
+       <a href="//jobs.coxmediagroup.com/" target="_blank">
+        careers at Cox Media Group
+       </a>
+       .
+      </p>
+     </div>
+    </div>
+   </footer>
+   <script>
+    var url = document.location.href.toString();
+if (url.indexOf("mode=new") != -1) {
+	if (url.indexOf("?mode=new&") != -1) {
+	    var newUrl = url.replace("?mode=new&","?");
+	} else if (url.indexOf("?mode=new") != -1) {
+	    var newUrl = url.replace("?mode=new","");
+	} else if (url.indexOf("&mode=new") != -1) {
+	    var newUrl = url.replace("&mode=new","");
+	}
+	if (history.replaceState) {
+		window.history.replaceState({"path":newUrl}, document.title, newUrl);
+	} else {
+		location.replace(newUrl);
+	}
+}
+   </script>
+   <script id="extended-scripts-block">
+    <!-- begin extended_scripts_override block -->
+<!-- end extended_scripts_override block -->
+   </script>
+   <!-- end footer_override block -->
+  </div>
+  <script src="/r/PortalConfig/np-one/assets-one/js/story.min.js" type="text/javascript">
+  </script>
+  <script src="/r/PortalConfig/np-one/assets-one/js/footer.min.js" type="text/javascript">
+  </script>
+  <script async="" defer="">
+   (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = '//connect.facebook.net/en_US/all.js#xfbml=1';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script src="//tru.am/scripts/custom/coxmedia.js">
+  </script>
+  <script style="display:none">
+   googletag.cmd.push(function () {
+                
+                if (window.newrelic) {
+                    var pageload = performance.now();
+                    newrelic.addPageAction('cmg_ads_pageview', {
+                        cmg_ads_page_type: cmg.adconf.targeting.obj_type,
+                        cmg_ads_environment: cmg.adconf.targeting.environ,
+                        cmg_ads_media_type: cmg.adconf.targeting.mediatype,
+                        cmg_ads_adunit: cmg.adconf.adunit,
+                        cmg_ads_adunit_level_one: 'Atlanta_NP',
+                        cmg_ads_adunit_level_two: 'myajc_web_default'
+                    });
+                    harmony.one('slotRenderEnded', function () {
+                        newrelic.addPageAction('cmg_ads_rendered', {
+                            cmg_ads_render_time: performance.now() - pageload,
+                            cmg_ads_page_type: cmg.adconf.targeting.obj_type,
+                            cmg_ads_environment: cmg.adconf.targeting.environ,
+                            cmg_ads_media_type: cmg.adconf.targeting.mediatype,
+                            cmg_ads_adunit: cmg.adconf.adunit,
+                            cmg_ads_adunit_level_one: 'Atlanta_NP',
+                            cmg_ads_adunit_level_two: 'myajc_web_default'
+                        });
+                    }, true);
+                    harmony.on('slotRenderEnded', function (event) {
+                        event.slot._loadstart = performance.now();
+                    }, true);
+                    harmony.on('slotOnload', function (event) {
+                        newrelic.addPageAction('cmg_ads_load', {
+                            cmg_ads_slot: event.slot._name,
+                            cmg_ads_render_time: performance.now() - event.slot._loadstart,
+                            cmg_ads_page_type: cmg.adconf.targeting.obj_type,
+                            cmg_ads_environment: cmg.adconf.targeting.environ,
+                            cmg_ads_media_type: cmg.adconf.targeting.mediatype,
+                            cmg_ads_adunit: cmg.adconf.adunit,
+                            cmg_ads_adunit_level_one: 'Atlanta_NP',
+                            cmg_ads_adunit_level_two: 'myajc_web_default'
+                        });
+                    });
+                }
+
+                
+                harmony.load.targeting(cmg.adconf.targeting);
+                harmony.load.breakpoints(cmg.adconf.breakpoints);
+
+                
+                if (cmg.adconf.breakpoints.length) {
+                    
+                    var currentBP = harmony.breakpoint();
+                    cmg.adconf.targeting.breakpoint = currentBP + 'px';
+                    googletag.pubads().setTargeting('breakpoint', currentBP + 'px');
+                    harmony.trigger('update/slots', currentBP);
+                    
+                    harmony.on('breakpoint/update', function (bp) {
+                        googletag.pubads().clear();
+                        googletag.pubads().setTargeting('breakpoint', bp + 'px');
+                        harmony.trigger('update/slots', bp);
+                        harmony.show.group('default');
+                        console.info('Ad System Update: Targeting key "breakpoint" changed to "' + bp + 'px"');
+                    }, true);
+                }
+
+                
+                if (!window.janrainSafariRefreshDetected) {
+                    harmony.show.group('default');
+                    harmony.trigger('ready');
+                }
+
+                
+                if (window.moatPrebidApi && moatPrebidApi.slotDataAvailable && moatPrebidApi.slotDataAvailable()) {
+                    moatPrebidApi.setMoatTargetingForAllSlots();
+                }
+            });
+  </script>
+  <script style="display:none">
+   harmony.one('ready', function () {
+        function append(msg) {
+            msg = msg || '';
+            log += msg + '\n';
+        }
+        function title(name) {
+            log += '\n';
+            log += name;
+            log += '\n-------------\n'
+        }
+        var log = '/* -----===== Begin Ad Logs =====----- */\n';
+
+        title('Ad Unit:');
+        append(
+            cmg.adconf.adunit || 'ERROR: Ad unit could not be calculated!'
+        );
+        if (cmg.adconf.adunitOverride) {
+            append('WARNING: Ad unit override is active.');
+        }
+        
+
+        title('Breakpoints:');
+        append(
+            cmg.adconf.breakpoints.length ? cmg.adconf.breakpoints : 'None defined'
+        );
+
+        title('System Targeting:');
+        append(
+            JSON.stringify(cmg.adconf.targeting, null, 3) || 'WARNING: None defined.'
+        );
+
+        title('Slot Configurations:');
+        if (!cmg.adconf.slotconf.length) {
+            append('WARNING: This page contains no ad slots.');
+        }
+        var slotList = [];
+        cmg.adconf.slotconf.forEach(function (slot) {
+         if (slotList.indexOf(slot.name) == -1) {
+             slotList.push(slot.name);
+            append(slot.name);
+
+            append('. default sizes:');
+            slot.sizes = slot.sizes || [];
+            if (!slot.sizes.length) {
+                append('\tNone defined');
+            }
+            slot.sizes.forEach(function (size) {
+                append('\t' + size);
+            });
+
+            append('. group: ' + slot.group);
+            append('. companion? ' + (slot.companion ? 'yes' : 'no'));
+            append('. out-of-page? ' + (slot.interstitial ? 'yes' : 'no'));
+            append('. targeting: ' + JSON.stringify(slot.targeting, null, 3));
+
+            append('. size mapping:');
+            slot.mapping = slot.mapping || [];
+            if (!slot.mapping.length) {
+                append('\tNone defined');
+            }
+            slot.mapping.forEach(function (breakpoint) {
+                append('\tat width ' + breakpoint[0][0] + 'px, use sizes:');
+                if (!breakpoint[1].length) {
+                    append('\t\tNone defined');
+                }
+                breakpoint[1].forEach(function (size) {
+                    append('\t\t' + size);
+                });
+            });
+
+            append();
+        }
+        });
+
+        title('System Information:');
+        append('Methode tags version 4.0.4');
+        append('Harmony version ' + harmony.version);
+
+        log += '\n/* -----====== End Ad Logs ======----- */\n';
+
+        console.info(log);
+    });
+  </script>
+  <script>
+   window.add_prebid_script = function () {
+	                var s = document.createElement( 'script' );
+	                s.setAttribute('src', 'https://acdn.adnxs.com/prebid/c/6990/pb.js');
+	                s.setAttribute('defer','');
+	                document.body.appendChild(s);
+	            }
+  </script>
+  <script>
+   _satellite.pageBottom();
+  </script>
+  <script type="text/javascript">
+   window.NREUM||(NREUM={});NREUM.info={"applicationID":"19209563","applicationTime":54,"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"aaf23b031f","transactionName":"MQYHNRZYCkZVBxcKVghMLzI0FgFaWUszDEsSAgkiC1cCXFNLDRNmVlNXBQtXARpbCgY8CVZRAQcWWAlQRwEXPFMWFw==","agent":"","errorBeacon":"bam.nr-data.net"}
+  </script>
+  <!-- begin header_mobile_nav_override block -->
+  <div id="weather_widget_data" style="display:none">
+   hour1: 1:00 PM + 52 + 1
+    hour2: 2:00 PM + 54 + 1
+    hour3: 3:00 PM + 56 + 1
+  </div>
+  <nav class="hamburger">
+   <div class="nav-menu-toggle">
+    <div class="nav-flyout-btn">
+    </div>
+   </div>
+   <div class="header__logo--subnav">
+    <a href="/" title="www.myajc.com">
+     <img class="myajc" src="/r/PortalConfig/np-one/assets-one/myajc/images/logo-mobile-hamburger.svg">
+     </img>
+    </a>
+   </div>
+   <ul class="main-nav">
+    <li class="main-nav__item main-nav__user-mobile">
+     <div class="nav-auth js-nav-auth">
+      <div class="nav-auth__anon-user">
+       <div class="nav-auth__anon-user__icon js-auth-login">
+        <div class="nav-auth__anon-user__icon__img">
+         <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-white.svg"/>
+        </div>
+        <div class="nav-auth__anon-user__icon__text">
+         Log In
+        </div>
+       </div>
+      </div>
+      <div class="nav-auth__authed-user js-auth-mobile">
+       <div class="nav-auth__authed-user__icon main-nav__item__link">
+        <div class="nav-auth__authed-user__icon__img">
+         <img alt="user icon" name="user icon" src="/r/PortalConfig/np-one/assets-one/images/icons/user-icon-anonymous-hamburger.svg"/>
+        </div>
+        <img class="nav-auth__authed-user__icon__avatar js-user-avatar">
+         <div class="nav-auth__authed-user__icon__text js-user-name">
+         </div>
+        </img>
+       </div>
+       <div class="main-nav__flyout nav-auth__authed-user__flyout">
+        <ul class="main-nav__flyout-subnav nav-auth__authed-user__flyout__subnav">
+         <li class="main-nav__flyout-subnav__item nav-auth__authed-user__flyout__item nav-auth__authed-user__flyout__item--bold">
+          <a class="js-auth-logout" href="#">
+           Logout
+          </a>
+         </li>
+         <li class="main-nav__flyout-subnav__item nav-auth__authed-user__flyout__item js-auth-item hidden">
+          <a href="#">
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item__search-mobile">
+     <div class="main-nav__item__search-form-container">
+      <img class="main-nav__search-icon-mobile" src="/r/PortalConfig/np-one/assets-one/images/icons/search-icon.svg">
+       <form class="main-nav__item__search">
+        <input class="main-nav__item__search__input" id="search" name="q" type="text" value=""/>
+       </form>
+      </img>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="" data-name="Frontpage">
+     <a class="main-nav__item__link" href="/" target="_self">
+      Frontpage
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="" data-name="News">
+     <a class="main-nav__item__link">
+      News
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       News
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="14">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/" target="_self">
+         All News
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/atlanta-news/" target="_self">
+         Local News
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/weather/" target="_self">
+         Local         Weather
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/traffic/" target="_self">
+         Local         Traffic
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/investigations/" target="_self">
+         AJC Investigations
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/crime/" target="_self">
+         Crime
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/education/" target="_self">
+         Education
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/business/" target="_self">
+         Business
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/nation-world/" target="_self">
+         Nation &amp; World
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/voices/" target="_self">
+         AJC         Columnists
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/opinion/" target="_self">
+         Opinion
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/voices/breakdown/" target="_self">
+         Breakdown
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/data/" target="_self">
+         Interactives/Data
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/ajcjobs/" target="_self">
+         Jobs
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="politics" data-name="Politics">
+     <a class="main-nav__item__link">
+      Politics
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       Politics
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="9">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/georgia-government/" target="_self">
+         All Politics
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/political-insider-blog/" target="_self">
+         Political Insider
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/georgia-state-legislature/" target="_self">
+         Legislature
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/issues/" target="_self">
+         Issues
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/election/" target="_self">
+         Elections
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/georgia-politics-voices/" target="_self">
+         Columnists
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/national-politics/" target="_self">
+         National
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/state--regional-govt--politics/how-contact-your-lawmakers-and-get-involved-georgia-politics/WY5agdUCcpWRNDHKbm7YKP/" target="_self">
+         Take Action
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/voices/luckovich-blog/" target="_self">
+         Mike Luckovich
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="" data-name="County by County">
+     <a class="main-nav__item__link">
+      County by County
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       County by County
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="8">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/" target="_self">
+         All County by County
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/clayton/" target="_self">
+         Clayton
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/cobb/" target="_self">
+         Cobb
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/dekalb/" target="_self">
+         DeKalb
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/gwinnett/" target="_self">
+         Gwinnett
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/north-fulton/" target="_self">
+         North Fulton
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/neighborhoods/atlanta-intown/" target="_self">
+         Intown Atlanta
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/local-govt--politics/gwinnett-upcoming-marta-referendum-comprehensive-voter-guide/CVj5YhwsvzesGoX29o0xvL/" target="_self">
+         Gwinnett MARTA referendum
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="" data-name="Things To Do">
+     <a class="main-nav__item__link">
+      Things To Do
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       Things To Do
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="12">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/go-guide/" target="_self">
+         All Things To Do
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="https://events.ajc.com/home" target="_blank">
+         Events in Atlanta
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/food/atlanta-restaurants-blog/" target="_self">
+         Atlanta Restaurants
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/music-blog/" target="_self">
+         Atlanta Music Scene
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/things-to-do/buford-highway-dining-guide/" target="_self">
+         AJC Dining Guides
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/food/" target="_self">
+         Food         &amp; Recipes
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/radiotvtalk-blog/" target="_self">
+         Radio &amp; TV
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/flashback/" target="_self">
+         Flashback Photos
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="https://games.ajc.com/" target="_blank">
+         Puzzles         &amp; Games
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/the-a-list/" target="_self">
+         My         Atlanta
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/podcasts/" target="_self">
+         Podcasts
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="https://www.ajc.com/peachtree/" target="_self">
+         AJC Peachtree Road Race
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="living" data-name="Life">
+     <a class="main-nav__item__link">
+      Life
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       Life
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="12">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/" target="_self">
+         All Life
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/buzz-blog/" target="_self">
+         Celebrity Buzz
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/talk-town-blog/" target="_self">
+         Talk of the Town
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/life/home-garden/" target="_self">
+         Home &amp; Garden
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/health-news/BI5FoTVo4SGUtuoI5fp8DL/" target="_self">
+         Health
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/travel/" target="_self">
+         Travel
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/living/sunday-living-arts/" target="_self">
+         Atlanta Living &amp; Arts
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="https://classifieds.ajc.com/" target="_blank">
+         Classifieds
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/obituaries/" target="_self">
+         Obituaries
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/video/Fsahkc3p7ItDwBqiOF1oGP/" target="_self">
+         Videos
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/news/photos/JwxCP0l6c3vJ6M3qFPysrO/" target="_self">
+         Photos
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="https://clark.com/" target="_self">
+         Clark Howard
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--mobile-menu main-nav__item--bottom-bar " data-id="" data-name="Sports">
+     <a class="main-nav__item__link">
+      Sports
+     </a>
+     <div class="main-nav__item--circle">
+     </div>
+     <div class="main-nav__flyout__section-name">
+      <a class="main-nav__item__link">
+       Sports
+      </a>
+      <div class="main-nav__flyout__section-name--overlay">
+      </div>
+     </div>
+     <div class="main-nav__flyout js-main-nav-flyout">
+      <ul class="main-nav__flyout-subnav js-main-nav-flyout-subnav" item-count="11">
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/sports/" target="_self">
+         All Sports
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/atlanta-braves/" target="_self">
+         Braves/MLB
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/georgia-bulldogs/" target="_self">
+         UGA/DawgNation
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/atlanta-falcons/" target="_self">
+         Falcons/NFL
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/atlanta-united/" target="_self">
+         Atlanta United/MLS
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/georgia-tech/" target="_self">
+         Georgia Tech/ACC
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/atlanta-hawks/" target="_self">
+         Hawks/NBA
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/high-school-sports/" target="_self">
+         High Schools
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="//ajc.stats.com/" target="_blank">
+         Scores &amp; Stats
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/state-report/" target="_self">
+         State Report
+        </a>
+       </li>
+       <li class="main-nav__flyout-subnav__item">
+        <a href="/sports/in-the-game/" target="_self">
+         In The Game with Harrah’s
+        </a>
+       </li>
+      </ul>
+     </div>
+    </li>
+    <li class="main-nav__item main-nav__item--bottom-bar main-nav__item__epaper">
+     <a class="main-nav__item__link" href="https://www.ajc.com/epaper" target="_blank">
+      ePaper
+     </a>
+    </li>
+    <li>
+     <div class="mobile-weather-widget">
+      <a href="/weather/">
+       <div class="weather-widget ">
+        <div class="weather-widget__top">
+         <div class="weather-widget__met-img">
+          <img src="https://media-beta.wsbtv.com/photo/2016/01/14/WSB_Brian_Monahan_1452784523907_223140_ver1.0.png">
+          </img>
+         </div>
+         <div class="weather-widget__met-info">
+          <div class="weather-widget__forecast-by">
+           Forecast by Meteorologist
+          </div>
+          <div class="weather-widget__met-name">
+           Brian Monahan
+          </div>
+          <img src="/rw/PortalConfig/np-one/assets-one/images/weatherlogo-affiliate-wsbtv.png">
+          </img>
+         </div>
+         <div class="weather-widget__now">
+          <div class="weather-widget__current-temp">
+           <div class="weather-icon weather-12">
+           </div>
+           46°
+          </div>
+          <div class="weather-widget__current-desc">
+           Few Clouds
+          </div>
+         </div>
+        </div>
+        <div class="weather-widget__bottom weather-background-12">
+         <div class="weather-widget__hour1">
+          <span class="weather-widget__hour1-time">
+           1:00 PM
+          </span>
+          <span class="weather-icon weather-1">
+          </span>
+          <span class="weather-widget__hour1-temp">
+           52°
+          </span>
+         </div>
+         <div class="weather-widget__hour2">
+          <span class="weather-widget__hour2-time">
+           2:00 PM
+          </span>
+          <span class="weather-icon weather-1">
+          </span>
+          <span class="weather-widget__hour2-temp">
+           54°
+          </span>
+         </div>
+         <div class="weather-widget__hour3">
+          <span class="weather-widget__hour3-time">
+           3:00 PM
+          </span>
+          <span class="weather-icon weather-1">
+          </span>
+          <span class="weather-widget__hour3-temp">
+           56°
+          </span>
+         </div>
+        </div>
+       </div>
+      </a>
+     </div>
+    </li>
+    <li>
+     <div class="mobile-menu-footer">
+      <div class="mobile-menu-footer__social">
+       <a class="mobile-menu-footer__social__facebook" href="http://www.facebook.com/ajc" target="_blank">
+        <img alt="Facebook Icon" name="" src="/r/PortalConfig/np-one/assets-one/images/icons/facebook.svg"/>
+        <span class="sr-only">
+         Facebook
+        </span>
+       </a>
+       <a class="mobile-menu-footer__social__twitter" href="http://www.twitter.com/ajc" target="_blank">
+        <img alt="Twitter Icon" name="" src="/r/PortalConfig/np-one/assets-one/images/icons/twitter.svg"/>
+        <span class="sr-only">
+         Twitter
+        </span>
+       </a>
+      </div>
+      <div class="mobile-menu-footer__copyright">
+       <span>
+        © 2019
+       </span>
+       <a href="https://www.coxmediagroup.com" target="_blank">
+        Cox Media Group
+       </a>
+      </div>
+      <div class="mobile-menu-footer__bottom-links">
+       <a href="/visitor_agreement/">
+        Visitor Agreement
+       </a>
+       |
+       <a href="/privacy_policy/">
+        Privacy Policy
+       </a>
+       |
+       <a href="/contact-us/">
+        Contact
+       </a>
+      </div>
+      <a href="https://hub.ajc.com/products#mobile-app" target="_blank">
+       Mobile Apps
+      </a>
+     </div>
+    </li>
+   </ul>
+   <div class="hamburger-close-btn">
+    <img class="" src="/r/PortalConfig/np-one/assets-one/images/icons/close.svg">
+    </img>
+   </div>
+  </nav>
+  <!-- end header_mobile_nav_override block -->
+  <script type="text/javascript">
+   window._taboola = window._taboola || [];
+			  _taboola.push({flush: true});
+  </script>
+  <!--support for page refresh-->
+ </body>
+</html>
+

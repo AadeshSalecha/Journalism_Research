@@ -1,0 +1,124 @@
+2019-02-19 21:42:36.979599
+
+News Org                                 Input      RTs        NoLinks    Output     
+StarTribune.out.csv                      821        83         2          726        
+washingtonpost.out.csv                   2005       81         1          1923       
+nytimes.out.csv                          2992       608        4          2368       
+nypost.out.csv                           3159       74         0          3085       
+latimes.out.csv                          1084       201        6          852        
+Newsday.out.csv                          227        17         0          209        
+USATODAY.out.csv                         3198       732        56         2176       
+chicagotribune.out.csv                   2176       200        0          1940                
+
+2019-02-20 14:24:36.686884
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+USATODAY.out.csv                         1          0          1          0          0         
+
+
+2019-02-20 14:25:45.351986
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 14:25:58.444099
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+USATODAY.out.csv                         1          0          1          0          0         
+
+
+2019-02-20 14:27:32.268046
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+USATODAY.out.csv                         1          0          0          1          0         
+
+
+2019-02-20 14:54:02.671020
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+USATODAY.out.csv                         3198       732        56        
+
+2019-02-20 16:56:29.459889
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 16:59:10.300050
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:02:20.567471
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:03:10.275821
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:04:02.084122
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:04:28.410873
+
+News Org                                 Input      RTs        NoLinks    Ou
+
+
+2019-02-21 09:27:46.325119
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+usatoday                                 3198       732        155        1985       0    
+
+2019-02-21 09:28:34.008724
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+chicagotribune                           2176       200        4          1878       0    Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:20:55.166601
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:52:11.698293
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:52:37.883159
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:54:01.661788
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 17:56:36.071655
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 18:19:51.265036
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 18:25:10.802828
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+
+
+2019-02-20 18:30:29.441305
+
+News Org                                 Input      RTs    
+
+2019-02-21 09:08:58.667337
+
+News Org                                 Input      RTs        NoLinks    Output     Skipped   
+nytimes                                  2992       608        6          2277       0    latimes                                  1084       201        7          802        0    
